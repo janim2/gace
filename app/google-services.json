@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "75079593381",
+    "firebase_url": "https://ecom-e5158.firebaseio.com",
+    "project_id": "ecom-e5158",
+    "storage_bucket": "ecom-e5158.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:75079593381:android:a8f5ee18837ffcbb",
+        "android_client_info": {
+          "package_name": "com.gace.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "75079593381-vfoql912i73sst9dmgtim2qbbd69dp9f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBr4gnMR6vCnGigFefTpIwAB3pIDgNWmd4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "75079593381-vfoql912i73sst9dmgtim2qbbd69dp9f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -28,6 +28,7 @@
             android:background="@drawable/round_edge_stroke"
             android:gravity="center_vertical"
             android:hint="Email or Phone"
+            android:inputType="textEmailAddress"    
             android:padding="16dp"
             android:textColorHint="@android:color/white" />
 
@@ -39,6 +40,7 @@
             android:background="@drawable/round_edge_stroke"
             android:gravity="center_vertical"
             android:hint="Password"
+            android:inputType="textPassword"
             android:padding="16dp"
             android:textColorHint="@android:color/white" />
 

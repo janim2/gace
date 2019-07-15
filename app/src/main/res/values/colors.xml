@@ -4,4 +4,5 @@
     <color name="colorPrimaryDark">#124ff7</color>
     <color name="colorAccent">#D81B60</color>
     <color name="tainted">#CBC9BFBF</color>
+    <color name="red">#CCFF0000</color>
 </resources>

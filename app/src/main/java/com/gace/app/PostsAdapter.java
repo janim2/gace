@@ -11,6 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gace.app.objects.Post;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -50,6 +52,11 @@ class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
         ImageView image = holder.view.findViewById(R.id.image);
         TextView description = holder.view.findViewById(R.id.discription);
         TextView location = holder.view.findViewById(R.id.location);
+
+//        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+//        storageReference.child("images/").child(itemList.get(position).getImage());
+//
+//        String imageurl  = storageReference.getDownloadUrl().toString();
 
         //prep work before image is loaded is to load it into the cache
         DisplayImageOptions theImageOptions = new DisplayImageOptions.Builder().cacheInMemory(true).

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UploadEvent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Feel free to upload an event"
+            android:textColor="@color/colorPrimary"
+            android:textSize="15sp"
+            android:padding="20dp"
+            android:gravity="center_horizontal"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Upload Success"
+            android:textColor="@android:color/holo_green_dark"
+            android:textSize="15sp"
+            android:padding="10dp"
+            android:visibility="gone"
+            android:id="@+id/successful"
+            android:gravity="center_horizontal"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:id="@+id/imageframe_layout">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:src="@android:color/darker_gray"
+                    android:id="@+id/event_poster"
+                    android:adjustViewBounds="true"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tap to upload Image"
+                    android:padding="5dp"
+                    android:textSize="15sp"
+                    android:textColor="@android:color/black"
+                    android:gravity="center_horizontal"/>
+            </FrameLayout>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            app:cardCornerRadius="15sp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/colorPrimary"
+                >
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/event_title"
+                    android:inputType="text"
+                    android:background="@android:drawable/editbox_background"
+                    android:hint="Event Title" />
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/event_organizers"
+                    android:inputType="text"
+                    android:hint="Event Organizers"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/event_location"
+                    android:inputType="textMultiLine"
+                    android:hint="Event Location"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/event_description"
+                    android:inputType="textMultiLine"
+                    android:hint="Event Description"/>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="ADD EVENT"
+            android:id="@+id/addevent_button"
+            android:layout_margin="20dp"
+            android:textColor="@android:color/white"
+            android:background="@color/colorPrimary"/>
+
+    </LinearLayout>
+
+</ScrollView>

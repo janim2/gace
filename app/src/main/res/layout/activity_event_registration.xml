@@ -70,6 +70,17 @@
             android:id="@+id/occupation"
             android:textColorHint="@android:color/white" />
 
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/round_edge_stroke"
+            android:gravity="center_vertical"
+            android:hint="Institution"
+            android:padding="16dp"
+            android:id="@+id/institution"
+            android:textColorHint="@android:color/white" />
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -81,6 +92,16 @@
             android:textColor="@color/colorPrimaryDark"
             android:textSize="16sp"
             android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="result"
+            android:visibility="gone"
+            android:textSize="20sp"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:id="@+id/result"/>
 
     </LinearLayout>
 

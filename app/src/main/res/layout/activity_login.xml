@@ -14,21 +14,32 @@
         tools:context=".LoginActivity">
 
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:padding="20sp"
+            android:text="Let's get started"
+            android:gravity="center"
+            android:textColor="@color/colorPrimary"
+            android:background="@android:color/white"/>
+
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/logos"
+            android:layout_gravity="center"
             android:background="@android:color/white" />
 
         <EditText
             android:id="@+id/fieldEmail"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="29dp"
             android:background="@drawable/round_edge_stroke"
             android:gravity="center_vertical"
             android:hint="Email or Phone"
-            android:inputType="textEmailAddress"    
             android:padding="16dp"
             android:textColorHint="@android:color/white" />
 
@@ -40,9 +51,20 @@
             android:background="@drawable/round_edge_stroke"
             android:gravity="center_vertical"
             android:hint="Password"
-            android:inputType="textPassword"
             android:padding="16dp"
+            android:inputType="textPassword"
             android:textColorHint="@android:color/white" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Forgot Password?"
+            android:gravity="end"
+            android:id="@+id/forgot_password"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            android:textColor="@android:color/holo_red_dark"
+            android:layout_marginRight="13dp"/>
 
         <Button
             android:id="@+id/buttonSignIn"

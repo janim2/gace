@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -30,6 +31,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     private EditText mPasswordField;
     private Button mSignInButton;
     private Button mSignUpButton, loginface, logingmail;
+    TextView forgot_password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +46,20 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         mPasswordField = findViewById(R.id.fieldPassword);
         mSignInButton = findViewById(R.id.buttonSignIn);
         mSignUpButton = findViewById(R.id.buttonSignUp);
+        forgot_password = findViewById(R.id.forgot_password);
 //        loginface = findViewById(R.id.facebooklogin);
 //        logingmail = findViewById(R.id.gmaillogin);
 
         // Click listeners
         mSignInButton.setOnClickListener(this);
         mSignUpButton.setOnClickListener(this);
+
+        forgot_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
 
     }

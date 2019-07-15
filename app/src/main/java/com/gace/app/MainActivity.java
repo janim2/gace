@@ -1,10 +1,13 @@
 package com.gace.app;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -29,12 +32,17 @@ public class MainActivity extends BaseActivity {
     String title,description,user,location,imageurl;
     ProgressBar loading;
 
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().setTitle("NitchApp");
         loading  = (ProgressBar)findViewById(R.id.loading);
 
         PostRecyclerView = (RecyclerView) findViewById(R.id.myRecyclerView);
@@ -43,90 +51,117 @@ public class MainActivity extends BaseActivity {
         mPostLayoutManager = new LinearLayoutManager(MainActivity.this);
         PostRecyclerView.setLayoutManager(mPostLayoutManager);
 
-        getPostIds();
 
-        mPostAdapter = new PostAdapter(getPosts(), MainActivity.this);
-        PostRecyclerView.setAdapter(mPostAdapter);
+        try{
 
+            getPostIds();
 
+            mPostAdapter = new PostAdapter(getPosts(), MainActivity.this);
+            PostRecyclerView.setAdapter(mPostAdapter);
+        }catch (NoClassDefFoundError e){
+
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_profile:
+                startActivity(new Intent(MainActivity.this,MyProfile.class));
+
+                break;
+            case R.id.action_upload:
+                startActivity(new Intent(MainActivity.this,UploadEvent.class));
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void getPostIds() {
-        DatabaseReference Postdatabase = FirebaseDatabase.getInstance().getReference().child("post");
+        try{
+            DatabaseReference Postdatabase = FirebaseDatabase.getInstance().getReference().child("post");
 
-        Postdatabase.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
-                    for(DataSnapshot child : dataSnapshot.getChildren()){
-                        FetchPosts(child.getKey());
+            Postdatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if(dataSnapshot.exists()){
+                        for(DataSnapshot child : dataSnapshot.getChildren()){
+                            FetchPosts(child.getKey());
+                        }
+                    }else{
+                        Toast.makeText(MainActivity.this,"Doesnt",Toast.LENGTH_LONG).show();
+
                     }
-                }else{
-                    Toast.makeText(MainActivity.this,"Doesnt",Toast.LENGTH_LONG).show();
-
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(MainActivity.this,"Cancelled",Toast.LENGTH_LONG).show();
-            }
-        });
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Toast.makeText(MainActivity.this,"Cancelled",Toast.LENGTH_LONG).show();
+                }
+            });
+
+        }catch (NullPointerException e){
+
+        }
 
     }
 
     private void FetchPosts(final String key) {
-        DatabaseReference postData = FirebaseDatabase.getInstance().getReference().child("post").child(key);
-        postData.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
-                    for(DataSnapshot child : dataSnapshot.getChildren()){
-                        if(child.getKey().equals("image")){
-                            imageurl = child.getValue().toString();
-                        }
+        try {
+            DatabaseReference postData = FirebaseDatabase.getInstance().getReference().child("post").child(key);
+            postData.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if(dataSnapshot.exists()){
+                        for(DataSnapshot child : dataSnapshot.getChildren()){
+                            if(child.getKey().equals("image")){
+                                imageurl = child.getValue().toString();
+                            }
 
-                        if(child.getKey().equals("title")){
-                            title = child.getValue().toString();
-                        }
+                            if(child.getKey().equals("title")){
+                                title = child.getValue().toString();
+                            }
 
-                        if(child.getKey().equals("description")){
-                            description = child.getValue().toString();
-                        }
+                            if(child.getKey().equals("description")){
+                                description = child.getValue().toString();
+                            }
 
-                        if(child.getKey().equals("user")){
-                            user = child.getValue().toString();
-                        }
+                            if(child.getKey().equals("user")){
+                                user = child.getValue().toString();
+                            }
 
-                        if(child.getKey().equals("location")){
-                            location = child.getValue().toString();
-                        }
+                            if(child.getKey().equals("location")){
+                                location = child.getValue().toString();
+                            }
 
-                        else{
+                            else{
 //                            Toast.makeText(MainActivity.this,"Couldn't fetch posts",Toast.LENGTH_LONG).show();
 
+                            }
                         }
+
+                        String eventid = key;
+
+                        Post obj = new Post(eventid,imageurl,description,location,title,user);
+                        resultPost.add(obj);
+                        PostRecyclerView.setAdapter(mPostAdapter);
+                        mPostAdapter.notifyDataSetChanged();
+                        loading.setVisibility(GONE);
                     }
-
-                    String eventid = key;
-
-                    Post obj = new Post(eventid,imageurl,description,location,title,user);
-                    resultPost.add(obj);
-                    PostRecyclerView.setAdapter(mPostAdapter);
-                    mPostAdapter.notifyDataSetChanged();
-                    loading.setVisibility(GONE);
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(MainActivity.this,"Cancelled",Toast.LENGTH_LONG).show();
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Toast.makeText(MainActivity.this,"Cancelled",Toast.LENGTH_LONG).show();
 
-            }
-        });
+                }
+            });
+
+        }catch(NullPointerException e){
+
+        }
 
     }
-
 
     public ArrayList<Post> getPosts(){
         return  resultPost;

@@ -1,8 +1,13 @@
 package com.gace.app;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +17,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.gace.app.objects.Post;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -73,8 +79,48 @@ public class MainActivity extends BaseActivity {
             case R.id.action_upload:
                 startActivity(new Intent(MainActivity.this,UploadEvent.class));
                 break;
+
+            case R.id.action_logout:
+                if(isNetworkAvailable()){
+                    if(logout()){
+                        Toast.makeText(MainActivity.this,"Logout Successfull",Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                    }
+                }else{
+                    Toast.makeText(MainActivity.this,"No Internet Connection",Toast.LENGTH_LONG).show();
+                }
+
+                break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private boolean logout() {
+        AlertDialog.Builder logout = new AlertDialog.Builder(MainActivity.this, R.style.Myalert);
+        logout.setTitle("Logging Out?");
+        logout.setMessage("Are you sure you want to logout");
+        logout.setNegativeButton("Logout", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                try {
+                    FirebaseAuth.getInstance().signOut();
+                }catch(NullPointerException e){
+
+                }
+            }
+        });
+
+        logout.setPositiveButton("Stay", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        logout.show();
+
+        return true;
     }
 
     private void getPostIds() {
@@ -162,6 +208,14 @@ public class MainActivity extends BaseActivity {
         }
 
     }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
 
     public ArrayList<Post> getPosts(){
         return  resultPost;

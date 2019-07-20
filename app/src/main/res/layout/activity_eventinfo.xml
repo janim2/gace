@@ -61,7 +61,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/buttonstyle"
                 android:textColor="@android:color/white"
-                android:text="I am Going ( JOIN )"/>
+                android:text="REGISTER"/>
 
 
             <View
@@ -90,6 +90,17 @@
                 android:layout_marginTop="20dp"
                 android:textColor="@android:color/black"
                 android:text="Kwadaso, CAC Int'l" />
+
+            <TextView
+                android:id="@+id/prize"
+                android:drawableStart="@drawable/prize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="2dp"
+                android:textSize="16sp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/colorPrimary"
+                android:text="GHC 0.00" />
 
             <ImageView
                 android:layout_width="match_parent"

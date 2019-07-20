@@ -79,6 +79,24 @@
                     android:background="@android:drawable/editbox_background"
                     android:hint="Event Title" />
 
+                <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:id="@+id/event_rate"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:drawable/editbox_background" />
+
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/event_prize"
+                    android:inputType="numberDecimal"
+                    android:visibility="gone"
+                    android:hint="Prize"/>
+
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
@@ -105,6 +123,34 @@
                     android:id="@+id/event_description"
                     android:inputType="textMultiLine"
                     android:hint="Event Description"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:drawable/editbox_background"
+                        android:id="@+id/event_date"
+                        android:inputType="textMultiLine"
+                        android:layout_weight="1"
+                        android:hint="Select Date"/>
+
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:drawable/editbox_background"
+                        android:layout_weight="1"
+                        android:id="@+id/event_time"
+                        android:inputType="textMultiLine"
+                        android:hint="Select Time"/>
+
+
+
+                </LinearLayout>
 
             </LinearLayout>
         </android.support.v7.widget.CardView>

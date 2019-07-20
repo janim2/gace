@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -57,7 +58,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         forgot_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(LoginActivity.this, Reset_password.class));
             }
         });
 
@@ -183,5 +184,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         } else if (i == R.id.buttonSignUp) {
             signUp();
         }
+    }
+
+    @Override
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
     }
 }

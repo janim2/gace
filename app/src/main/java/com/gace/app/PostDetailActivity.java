@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.gace.app.objects.Post;
@@ -159,6 +160,11 @@ public class PostDetailActivity extends BaseActivity implements View.OnClickList
 
                     }
                 });
+    }
+
+    @Override
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
     }
 
     private static class CommentViewHolder extends RecyclerView.ViewHolder {

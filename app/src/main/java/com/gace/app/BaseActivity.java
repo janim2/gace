@@ -2,11 +2,12 @@ package com.gace.app;
 
 import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TimePicker;
 
 import com.google.firebase.auth.FirebaseAuth;
 
 
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
     private ProgressDialog mProgressDialog;
 
@@ -31,5 +32,6 @@ public class BaseActivity extends AppCompatActivity {
     }
 
 
+    public abstract void onTimeSet(TimePicker view, int hourOfDay, int minute);
 }
 

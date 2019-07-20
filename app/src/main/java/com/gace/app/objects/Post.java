@@ -14,9 +14,15 @@ public class Post {
     public String location;
     public String title;
     public String user;
+    public String rate;
+    public String prize;
+    public String date;
+    public String time;
 
 
-    public Post(String eventid, String image,String description, String location,String title,String user) {
+
+    public Post(String eventid, String image,String description, String location,String title,
+                String user,String rate,String prize,String date, String time) {
 
         this.eventid = eventid;
         this.image = image;
@@ -24,6 +30,10 @@ public class Post {
         this.location = location;
         this.title = title;
         this.user = user;
+        this.rate = rate;
+        this.prize = prize;
+        this.date = date;
+        this.time = time;
 
 
 //        this.image = image;
@@ -44,13 +54,18 @@ public class Post {
 //    public void setTitle(String title) { this.title = title; }
 
      public String getUser() { return user; }
+
+     public String getRate() { return rate; }
+
+     public String getPrize() { return prize; }
+
+     public String getDate() { return date; }
+
+     public String getTime() { return time; }
 //    public void setUser(String user) { this.user= user; }
 //
 //     public String getImage() { return image; }
 //    public void setImage(String image) { this.image= image; }
-
-
-
 
 
 //    // [START post_to_map]

@@ -14,9 +14,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ProgressBar;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.gace.app.objects.Post;
+import com.gace.app.objects.PostAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,14 +30,14 @@ import java.util.ArrayList;
 
 import static android.view.View.GONE;
 
-
+@SuppressWarnings("unchecked")
 public class MainActivity extends BaseActivity {
 
     RecyclerView PostRecyclerView;
     RecyclerView.Adapter mPostAdapter;
     RecyclerView.LayoutManager mPostLayoutManager;
     ArrayList resultPost = new ArrayList<Post>();
-    String title,description,user,location,imageurl;
+    String title,description,user,location,imageurl,rate,prize,the_date,the_time;
     ProgressBar loading;
 
     @Override
@@ -82,12 +84,7 @@ public class MainActivity extends BaseActivity {
 
             case R.id.action_logout:
                 if(isNetworkAvailable()){
-                    if(logout()){
-                        Toast.makeText(MainActivity.this,"Logout Successfull",Toast.LENGTH_LONG).show();
-                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
-                    }
+                        logout();
                 }else{
                     Toast.makeText(MainActivity.this,"No Internet Connection",Toast.LENGTH_LONG).show();
                 }
@@ -109,7 +106,12 @@ public class MainActivity extends BaseActivity {
                 }catch(NullPointerException e){
 
                 }
+                Toast.makeText(MainActivity.this,"Logout Successfull",Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
             }
+
         });
 
         logout.setPositiveButton("Stay", new DialogInterface.OnClickListener() {
@@ -180,15 +182,29 @@ public class MainActivity extends BaseActivity {
                                 location = child.getValue().toString();
                             }
 
+                            if(child.getKey().equals("rate")){
+                                rate = child.getValue().toString();
+                            }
+
+                            if(child.getKey().equals("prize")){
+                                prize = child.getValue().toString();
+                            }
+
+                            if(child.getKey().equals("date")){
+                                the_date = child.getValue().toString();
+                            }
+
+                            if(child.getKey().equals("time")){
+                                the_time = child.getValue().toString();
+                            }
                             else{
 //                            Toast.makeText(MainActivity.this,"Couldn't fetch posts",Toast.LENGTH_LONG).show();
-
                             }
                         }
 
                         String eventid = key;
 
-                        Post obj = new Post(eventid,imageurl,description,location,title,user);
+                        Post obj = new Post(eventid,imageurl,description,location,title,user,rate,prize,the_date,the_time);
                         resultPost.add(obj);
                         PostRecyclerView.setAdapter(mPostAdapter);
                         mPostAdapter.notifyDataSetChanged();
@@ -221,4 +237,8 @@ public class MainActivity extends BaseActivity {
         return  resultPost;
     }
 
+    @Override
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+
+    }
 }

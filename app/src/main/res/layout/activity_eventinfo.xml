@@ -11,23 +11,23 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <android.support.v7.widget.Toolbar
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:id="@+id/goback"
-            android:background="@color/colorPrimary">
+        <!--<android.support.v7.widget.Toolbar-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="50dp"-->
+            <!--android:id="@+id/goback"-->
+            <!--android:background="@color/colorPrimary">-->
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Event Information"
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
-                android:drawableLeft="@drawable/white"
-                android:gravity="center_vertical"/>
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:text="Event Information"-->
+                <!--android:textColor="@android:color/white"-->
+                <!--android:textSize="20sp"-->
+                <!--android:drawableLeft="@drawable/white"-->
+                <!--android:gravity="center_vertical"/>-->
 
 
-        </android.support.v7.widget.Toolbar>
+        <!--</android.support.v7.widget.Toolbar>-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -118,6 +118,22 @@
                 android:layout_marginTop="20dp"
                 android:text="A little description of the event" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="Location"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="20dp"/>
+
+            <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="10dp"
+                android:id="@+id/map"
+                tools:context=".MapsActivity"
+                android:name="com.google.android.gms.maps.SupportMapFragment" />
 
             <View
                 android:layout_width="match_parent"

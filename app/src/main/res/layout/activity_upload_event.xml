@@ -130,23 +130,25 @@
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal">
 
-                    <EditText
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@android:drawable/editbox_background"
                         android:id="@+id/event_date"
-                        android:inputType="textMultiLine"
                         android:layout_weight="1"
-                        android:hint="Select Date"/>
+                        android:text="Select date"
+                        android:textColor="@android:color/black"
+                        android:gravity="center_vertical"/>
 
-                    <EditText
+                    <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@android:drawable/editbox_background"
                         android:layout_weight="1"
                         android:id="@+id/event_time"
-                        android:inputType="textMultiLine"
-                        android:hint="Select Time"/>
+                        android:text="Select date"
+                        android:textColor="@android:color/black"
+                        android:gravity="center_vertical"/>
 
 
 

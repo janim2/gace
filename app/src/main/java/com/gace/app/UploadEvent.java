@@ -49,10 +49,10 @@ import java.util.Calendar;
 public class UploadEvent extends BaseActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
     FrameLayout imageframe_layout;
-    EditText event_title,event_organizers,event_location,event_description,event_prize,event_date, event_time;
+    EditText event_title,event_organizers,event_location,event_description,event_prize;
     Button addevent_button;
     String se_title, se_organizers, se_location, se_description, srate_of_event="",sevent_prize = "GHC 0.00",sevent_date,sevent_time;
-    TextView success;
+    TextView success,event_date, event_time;
     ImageView theeventposter;
     Spinner eventrate;
     String[] rate_list = {"Free","Paid"};
@@ -76,8 +76,8 @@ public class UploadEvent extends BaseActivity implements DatePickerDialog.OnDate
         theeventposter = (ImageView) findViewById(R.id.event_poster);
         eventrate = (Spinner) findViewById(R.id.event_rate);
         event_prize = (EditText) findViewById(R.id.event_prize);
-        event_date = (EditText) findViewById(R.id.event_date);
-        event_time = (EditText) findViewById(R.id.event_time);
+        event_date = (TextView) findViewById(R.id.event_date);
+        event_time = (TextView) findViewById(R.id.event_time);
 
         eventrate.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -114,16 +114,16 @@ public class UploadEvent extends BaseActivity implements DatePickerDialog.OnDate
         event_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText[] the_event_date = {event_date};
-                showDatePicker(the_event_date,null);
+                TextView[] the_event_date = {event_date};
+                showDatePicker(null,the_event_date);
             }
         });
 
         event_time.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText[] the_event_time = {event_time};
-                showTimePicker(the_event_time,null);
+                TextView[] the_event_time = {event_time};
+                showTimePicker(null,the_event_time);
             }
         });
 

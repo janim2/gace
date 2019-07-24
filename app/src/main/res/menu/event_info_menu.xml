@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item android:id="@+id/share"
+        android:title="Share"
+        app:showAsAction="always"
+        android:icon="@android:drawable/ic_menu_share"
+        />
+
+    <item android:id="@+id/calender"
+        android:title="Add to calender"
+        app:showAsAction="never"
+        />
+
+    <item android:id="@+id/contact_organizer"
+        android:title="Contact organizer"
+        app:showAsAction="never"
+        />
+
+     <item android:id="@+id/report"
+        android:title="Report event"
+        app:showAsAction="never"
+        />
+
+</menu>

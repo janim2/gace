@@ -3,6 +3,7 @@
     package="com.gace.app">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +12,16 @@
         android:roundIcon="@mipmap/thelogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Reset_password"></activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity android:name=".BuyTicket"
+            android:theme="@style/AppTheme.YesActionBar">
+
+        </activity>
+        <activity android:name=".Reset_password" />
         <activity
             android:name=".MyProfile"
             android:parentActivityName=".MainActivity"
@@ -20,12 +30,14 @@
             android:name=".UploadEvent"
             android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme.YesActionBar" />
-        <activity android:name=".EventRegistration"
-            android:theme="@style/AppTheme.YesActionBar"
-            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".EventRegistration"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.YesActionBar" />
         <activity
             android:name=".Eventinfo"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.YesActionBar"/>
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.YesActionBar" />

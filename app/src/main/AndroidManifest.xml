@@ -12,15 +12,26 @@
         android:roundIcon="@mipmap/thelogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Report_Activity"
+            android:parentActivityName=".Eventinfo"
+            android:theme="@style/AppTheme.YesActionBar"></activity>
+        <activity android:name=".Contact_Organizer"
+            android:theme="@style/AppTheme.YesActionBar"
+            android:parentActivityName=".Eventinfo"/>
+        <activity android:name=".OrderComplete" />
+        <activity
+            android:name=".Continue_Ticketing"
+            android:parentActivityName=".BuyTicket"
+            android:theme="@style/AppTheme.YesActionBar" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity android:name=".BuyTicket"
-            android:theme="@style/AppTheme.YesActionBar">
-
-        </activity>
+        <activity
+            android:name=".BuyTicket"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.YesActionBar" />
         <activity android:name=".Reset_password" />
         <activity
             android:name=".MyProfile"
@@ -37,7 +48,7 @@
         <activity
             android:name=".Eventinfo"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.YesActionBar"/>
+            android:theme="@style/AppTheme.YesActionBar" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.YesActionBar" />

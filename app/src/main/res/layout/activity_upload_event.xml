@@ -50,7 +50,7 @@
                     android:layout_height="wrap_content"
                     android:text="Tap to upload Image"
                     android:padding="5dp"
-                    android:textSize="15sp"
+                    android:textSize="14sp"
                     android:textColor="@android:color/black"
                     android:gravity="center_horizontal"/>
             </FrameLayout>
@@ -73,7 +73,8 @@
                 >
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
+                    android:textSize="14sp"
                     android:id="@+id/event_title"
                     android:inputType="text"
                     android:background="@android:drawable/editbox_background"
@@ -81,7 +82,8 @@
 
                 <Spinner
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
+                    android:textSize="14sp"
                     android:id="@+id/event_rate"
                     android:layout_marginTop="10dp"
                     android:background="@android:drawable/editbox_background" />
@@ -89,7 +91,8 @@
 
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
+                    android:textSize="14sp"
                     android:background="@android:drawable/editbox_background"
                     android:layout_marginTop="10dp"
                     android:id="@+id/event_prize"
@@ -99,7 +102,8 @@
 
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
+                    android:textSize="14sp"
                     android:background="@android:drawable/editbox_background"
                     android:layout_marginTop="10dp"
                     android:id="@+id/event_organizers"
@@ -108,7 +112,8 @@
 
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
+                    android:textSize="14sp"
                     android:background="@android:drawable/editbox_background"
                     android:layout_marginTop="10dp"
                     android:id="@+id/event_location"
@@ -117,7 +122,8 @@
 
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
+                    android:textSize="14sp"
                     android:background="@android:drawable/editbox_background"
                     android:layout_marginTop="10dp"
                     android:id="@+id/event_description"
@@ -126,7 +132,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
                     android:layout_marginTop="10dp"
                     android:orientation="horizontal">
 
@@ -136,6 +142,7 @@
                         android:background="@android:drawable/editbox_background"
                         android:id="@+id/event_date"
                         android:layout_weight="1"
+                        android:textSize="14sp"
                         android:text="Select date"
                         android:textColor="@android:color/black"
                         android:gravity="center_vertical"/>
@@ -147,6 +154,7 @@
                         android:layout_weight="1"
                         android:id="@+id/event_time"
                         android:text="Select date"
+                        android:textSize="14sp"
                         android:textColor="@android:color/black"
                         android:gravity="center_vertical"/>
 
@@ -159,8 +167,9 @@
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:text="ADD EVENT"
+            android:textSize="15sp"
             android:id="@+id/addevent_button"
             android:layout_margin="20dp"
             android:textColor="@android:color/white"

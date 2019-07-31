@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="170dp"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:elevation="20dp"
@@ -43,22 +43,22 @@
                     android:textColor="@android:color/black"
                     android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/discription"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="8dp"
-                    android:drawableStart="@drawable/ic_date_range_black_24dp"
-                    android:text="Fri, Sep 14 - 9:00 PM" />
+                <!--<TextView-->
+                    <!--android:id="@+id/discription"-->
+                    <!--android:textColor="@color/colorPrimaryDark"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:drawablePadding="8dp"-->
+                    <!--android:drawableStart="@drawable/ic_date_range_black_24dp"-->
+                    <!--android:text="Fri, Sep 14 - 9:00 PM" />-->
 
-                <TextView
-                    android:id="@+id/location"
-                    android:drawableStart="@drawable/ic_location_on_black_24dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="8dp"
-                    android:text="Kwadaso, CAC Int'l" />
+                <!--<TextView-->
+                    <!--android:id="@+id/location"-->
+                    <!--android:drawableStart="@drawable/ic_location_on_black_24dp"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:drawablePadding="8dp"-->
+                    <!--android:text="Kwadaso, CAC Int'l" />-->
 
 
             </LinearLayout>

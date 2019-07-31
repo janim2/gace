@@ -1,6 +1,8 @@
 package com.gace.app;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -20,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.math.BigDecimal;
 
-public class BuyTicket extends BaseActivity {
+public class BuyTicket extends AppCompatActivity {
 
     //    View object
     TextView title,price,sucess_message;
@@ -28,20 +30,28 @@ public class BuyTicket extends BaseActivity {
     Spinner typeSpinner,quantitySpinner;
     String type,quantity,id,eventPrice,eventTitle,eventID,total_prize;
 
-    //    database reference object
-    DatabaseReference reference;
-
-    FirebaseUser firebaseUser;
-
     Intent buyticketIntent;
     String[] type_list = {"General Admission", "VIP", "Reserved Seats","Early Bird Discount",
     "Coded Discount","Multi-day Pass"};
     String[] quantity_list = {"1","2","3","4"};
 
+//    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//        Intent returnIntent = new Intent();
+//        returnIntent.putExtra("therate",getIntent().getStringExtra("the_rate"));
+//        returnIntent.putExtra("eventid",eventID);
+//        returnIntent.putExtra("thetitle",eventTitle);
+//        returnIntent.putExtra("theprize",eventPrice);
+//        setResult(Activity.RESULT_OK,returnIntent);
+//        finish();
+//    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy_ticket);
+        getSupportActionBar().setTitle("Ticketing");
 
         buyticketIntent = getIntent();
         title = (TextView)findViewById(R.id.event_title);
@@ -51,10 +61,6 @@ public class BuyTicket extends BaseActivity {
         eventID = buyticketIntent.getStringExtra("usethis_id");
         eventTitle = buyticketIntent.getStringExtra("useevent_name");
         eventPrice = buyticketIntent.getStringExtra("useeent_prize");
-
-//        reference to the ticket node
-        reference = FirebaseDatabase.getInstance().getReference("ticket");
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
 //        getting views
         typeSpinner = (Spinner)findViewById(R.id.ticket_spinner);
@@ -115,26 +121,33 @@ public class BuyTicket extends BaseActivity {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showProgressDialog();
-
-                try{
-                    id = reference.push().getKey();
-                    reference.child(id).child(firebaseUser.getUid()).child("quantity").setValue(quantity);
-                    reference.child(id).child(firebaseUser.getUid()).child("type").setValue(type);
-                    reference.child(id).child(firebaseUser.getUid()).child("prize").setValue(total_prize);
-                    hideProgressDialog();
-                    sucess_message.setTextColor(getResources().getColor(R.color.green));
-                    sucess_message.setText("Registration Complete");
-                }catch (NullPointerException e){
-
-                }
+                    Intent continue_registration = new Intent(BuyTicket.this, Continue_Ticketing.class);
+                    continue_registration.putExtra("eventID",eventID);
+                    continue_registration.putExtra("event_name",eventTitle);
+                    continue_registration.putExtra("event_prize",total_prize);
+                    continue_registration.putExtra("ticket_quantity",quantity);
+                    continue_registration.putExtra("ticket_type",type);
+                    startActivityForResult(continue_registration,100);
             }
         });
 
     }
 
     @Override
-    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 100 && resultCode == Activity.RESULT_OK){
+            try{
+                assert data != null;
+                eventTitle=data.getStringExtra("useevent_name");
+                eventPrice=data.getStringExtra("useeent_prize");
+                title.setText(eventTitle);
+                price.setText(eventPrice);
+            }catch (NullPointerException e){
+
+            }
+
+        }
 
     }
 }

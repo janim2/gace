@@ -39,7 +39,8 @@
 
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
+                    android:textSize="14sp"
                     android:inputType="text"
                     android:background="@android:drawable/editbox_background"
                     android:hint="Name"
@@ -49,7 +50,8 @@
 
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
+                    android:textSize="14sp"
                     android:layout_marginTop="10dp"
                     android:background="@android:drawable/editbox_background"
                     android:hint="Email"
@@ -59,7 +61,8 @@
 
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
+                    android:textSize="14sp"
                     android:layout_marginTop="10dp"
                     android:background="@android:drawable/editbox_background"
                     android:hint="Telephone"
@@ -69,7 +72,8 @@
 
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
+                    android:textSize="14sp"
                     android:layout_marginTop="10dp"
                     android:background="@android:drawable/editbox_background"
                     android:hint="Occupation"
@@ -79,8 +83,9 @@
 
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
                     android:layout_marginTop="10dp"
+                    android:layout_height="40dp"
+                    android:textSize="14sp"
                     android:background="@android:drawable/editbox_background"
                     android:gravity="center_vertical"
                     android:hint="Institution"
@@ -90,14 +95,16 @@
 
                 <Spinner
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
                     android:layout_marginTop="10dp"
+                    android:layout_height="40dp"
+                    android:textSize="14sp"
                     android:background="@android:drawable/editbox_background"
                     android:id="@+id/country" />
 
                 <Spinner
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
+                    android:textSize="14sp"
                     android:layout_marginTop="10dp"
                     android:background="@android:drawable/editbox_background"
                     android:id="@+id/region"
@@ -105,7 +112,8 @@
 
                 <EditText
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
+                    android:textSize="14sp"
                     android:layout_marginTop="10dp"
                     android:background="@android:drawable/editbox_background"
                     android:hint="Area"
@@ -117,11 +125,11 @@
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:text="REGISTER"
             android:id="@+id/register"
             android:layout_margin="20dp"
-            android:textSize="16sp"
+            android:textSize="15sp"
             android:textStyle="bold"
             android:textColor="@android:color/white"
             android:background="@color/colorPrimary"/>

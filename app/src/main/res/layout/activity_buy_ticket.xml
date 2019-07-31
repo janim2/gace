@@ -16,7 +16,7 @@
             android:id="@+id/event_title"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:textSize="20sp"
+            android:textSize="17sp"
             android:textStyle="bold"
             android:padding="20dp"
             android:textColor="@android:color/black"
@@ -47,7 +47,7 @@
                     android:layout_width="wrap_content"
                     android:layout_marginTop="10dp"
                     android:textStyle="normal"
-                    android:textSize="16sp"
+                    android:textSize="15sp"
                     android:textColor="@android:color/white"
 
                     android:text="Ticket Type" />
@@ -56,7 +56,7 @@
                     android:id="@+id/ticket_spinner"
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
                     android:background="@android:drawable/editbox_background"/>
                 <!--android:entries="@array/ticket_arrays"-->
                 <!--android:prompt="@string/ticket_prompt" />-->
@@ -67,14 +67,14 @@
                     android:layout_width="wrap_content"
                     android:layout_marginTop="10dp"
                     android:textStyle="normal"
-                    android:textSize="16sp"
+                    android:textSize="15sp"
                     android:textColor="@android:color/white"
                     android:text="Quantity" />
 
                 <Spinner
                     android:id="@+id/quantity_spinner"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="40dp"
                     android:layout_marginTop="10dp"
                     android:background="@android:drawable/editbox_background"/>
                 <!--android:entries="@array/quantity_arrays"-->
@@ -88,7 +88,7 @@
             android:layout_width="wrap_content"
             android:textStyle="normal"
             android:padding="20dp"
-            android:textSize="16sp"
+            android:textSize="15sp"
             android:textColor="@android:color/black"
             android:text="Price" />
 
@@ -98,17 +98,18 @@
             android:layout_width="wrap_content"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/holo_red_dark"
             android:paddingBottom="10dp"
             android:text="" />
 
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="REGISTER"
+            android:layout_height="40dp"
+            android:text="NEXT"
             android:id="@+id/ticket_register"
             android:layout_margin="20dp"
+            android:textSize="15sp"
             android:textColor="@android:color/white"
             android:background="@color/colorPrimary"/>
 

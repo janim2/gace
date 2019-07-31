@@ -47,8 +47,8 @@
             android:layout_margin="20dp">
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:id="@+id/edit"
                 android:src="@android:drawable/ic_menu_edit"
                 android:layout_gravity="end"/>
@@ -60,7 +60,7 @@
                 android:padding="10dp"
                 android:layout_marginTop="70dp"
                 android:id="@+id/username"
-                android:textSize="15sp"/>
+                android:textSize="14sp"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -68,33 +68,35 @@
                 android:text="Email"
                 android:id="@+id/email"
                 android:padding="10dp"
-                android:textSize="15sp"/>
+                android:textSize="14sp"/>
 
             <EditText
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:hint="Old Password"
                 android:layout_marginTop="70dp"
                 android:visibility="gone"
+                android:textSize="14sp"
                 android:id="@+id/old_password_e_text"
                 android:background="@android:drawable/editbox_background"/>
 
 
              <EditText
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:hint="New Password"
                  android:id="@+id/new_password_e_text"
                  android:layout_marginTop="10dp"
                  android:visibility="gone"
+                 android:textSize="14sp"
                 android:background="@android:drawable/editbox_background"/>
 
             <Button
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
+                android:layout_height="40dp"
                 android:text="EDIT"
                 android:layout_marginTop="50dp"
-                android:textSize="15sp"
+                android:textSize="14sp"
                 android:visibility="gone"
                 android:id="@+id/submit_button"
                 android:textColor="@android:color/white"

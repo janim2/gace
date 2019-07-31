@@ -16,17 +16,17 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:textSize="20sp"
-            android:padding="20sp"
+            android:padding="5sp"
             android:text="Let's get started"
             android:gravity="center"
             android:textColor="@color/colorPrimary"
             android:background="@android:color/white"/>
 
         <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_marginTop="20dp"
             android:src="@drawable/logos"
             android:layout_gravity="center"
@@ -35,23 +35,25 @@
         <EditText
             android:id="@+id/fieldEmail"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_marginTop="29dp"
+            android:textSize="14sp"
             android:background="@drawable/round_edge_stroke"
             android:gravity="center_vertical"
             android:hint="Email or Phone"
-            android:padding="16dp"
+            android:padding="10dp"
             android:textColorHint="@android:color/white" />
 
         <EditText
             android:id="@+id/fieldPassword"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/round_edge_stroke"
             android:gravity="center_vertical"
             android:hint="Password"
-            android:padding="16dp"
+            android:textSize="14sp"
+            android:padding="10dp"
             android:inputType="textPassword"
             android:textColorHint="@android:color/white" />
 
@@ -62,32 +64,32 @@
             android:gravity="end"
             android:id="@+id/forgot_password"
             android:layout_marginTop="10dp"
-            android:textSize="15sp"
+            android:textSize="14sp"
             android:textColor="@android:color/holo_red_dark"
             android:layout_marginRight="13dp"/>
 
         <Button
             android:id="@+id/buttonSignIn"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/round_edge"
             android:text="Login"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/buttonSignUp"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/round_edge"
             android:text="Sign Up"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textStyle="bold"/>
         <TextView
             android:layout_width="match_parent"

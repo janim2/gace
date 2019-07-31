@@ -9,6 +9,13 @@
         android:icon="@android:drawable/ic_menu_share"
         />
 
+    <item android:id="@+id/favourites"
+        android:title="Favourites"
+        app:showAsAction="always"
+        android:icon="@drawable/favourites"
+        />
+
+
     <item android:id="@+id/calender"
         android:title="Add to calender"
         app:showAsAction="never"

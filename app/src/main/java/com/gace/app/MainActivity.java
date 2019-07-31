@@ -61,7 +61,6 @@ public class MainActivity extends BaseActivity {
 
 
         try{
-
             getPostIds();
 
             mPostAdapter = new PostAdapter(getPosts(), MainActivity.this);

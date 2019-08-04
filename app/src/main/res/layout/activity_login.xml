@@ -80,25 +80,27 @@
             android:textSize="14sp"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/buttonSignUp"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/round_edge"
-            android:text="Sign Up"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="14sp"
-            android:textStyle="bold"/>
+        <!--<Button-->
+            <!--android:id="@+id/buttonSignUp"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:layout_marginTop="16dp"-->
+            <!--android:layout_marginBottom="16dp"-->
+            <!--android:background="@drawable/round_edge"-->
+            <!--android:text="Sign Up"-->
+            <!--android:textColor="@color/colorPrimaryDark"-->
+            <!--android:textSize="14sp"-->
+            <!--android:textStyle="bold"/>-->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Or login using"
+            android:gravity="center"
+            android:text="Don't have an account? SIGN UP"
             android:textColor="@android:color/white"
             android:textStyle="bold"
-            android:visibility="gone" />
+            android:id="@+id/open_register"
+            android:textSize="13sp"/>
 
         <Button
             android:layout_width="match_parent"

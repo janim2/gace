@@ -98,13 +98,13 @@ public class MyProfile extends AppCompatActivity {
         }
 
 
-        imageCardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkPermission("android.permission.READ_EXTERNAL_STORAGE",
-                        "External Storage", 20);
-                galleryAction(2000);            }
-        });
+//        imageCardView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                checkPermission("android.permission.READ_EXTERNAL_STORAGE",
+//                        "External Storage", 20);
+//                galleryAction(2000);            }
+//        });
 
 
         getuserinfo();
@@ -118,6 +118,14 @@ public class MyProfile extends AppCompatActivity {
                 old_passwordeText.setVisibility(View.VISIBLE);
                 newPassword.setVisibility(View.VISIBLE);
                 submitButton.setVisibility(View.VISIBLE);
+
+                imageCardView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        checkPermission("android.permission.READ_EXTERNAL_STORAGE",
+                                "External Storage", 20);
+                        galleryAction(2000);            }
+                });
             }
         });
 

@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.gace.app.objects.Post;
 import com.gace.app.objects.PostAdapter;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,11 +40,26 @@ public class MainActivity extends BaseActivity {
     ArrayList resultPost = new ArrayList<Post>();
     String title,description,user,location,imageurl,rate,prize,the_date,the_time;
     ProgressBar loading;
+    FirebaseUser firebaseUser;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main,menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(firebaseUser!=null){
+            if(firebaseUser.isEmailVerified()){
+
+            }else{
+                FirebaseAuth.getInstance().signOut();
+                Toast.makeText(MainActivity.this,"Verify Email",Toast.LENGTH_LONG).show();
+                startActivity(new Intent(MainActivity.this,LoginActivity.class));
+            }
+        }
     }
 
     @Override
@@ -53,6 +69,7 @@ public class MainActivity extends BaseActivity {
         getSupportActionBar().setTitle("NitchApp");
         loading  = (ProgressBar)findViewById(R.id.loading);
 
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         PostRecyclerView = (RecyclerView) findViewById(R.id.myRecyclerView);
         PostRecyclerView.setHasFixedSize(true);
 
@@ -88,6 +105,10 @@ public class MainActivity extends BaseActivity {
                     Toast.makeText(MainActivity.this,"No Internet Connection",Toast.LENGTH_LONG).show();
                 }
 
+                break;
+
+            case R.id.action_search:
+                startActivity(new Intent(MainActivity.this,Search_Activity.class));
                 break;
         }
         return super.onOptionsItemSelected(item);

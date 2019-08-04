@@ -346,7 +346,6 @@ public class UploadEvent extends BaseActivity implements DatePickerDialog.OnDate
             }
         }
     }
-
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 

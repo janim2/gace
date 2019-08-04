@@ -32,7 +32,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     private EditText mPasswordField;
     private Button mSignInButton;
     private Button mSignUpButton, loginface, logingmail;
-    TextView forgot_password;
+    TextView open_register,forgot_password;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,14 +47,22 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         mEmailField = findViewById(R.id.fieldEmail);
         mPasswordField = findViewById(R.id.fieldPassword);
         mSignInButton = findViewById(R.id.buttonSignIn);
-        mSignUpButton = findViewById(R.id.buttonSignUp);
+//        mSignUpButton = findViewById(R.id.buttonSignUp);
+        open_register = findViewById(R.id.open_register);
         forgot_password = findViewById(R.id.forgot_password);
 //        loginface = findViewById(R.id.facebooklogin);
 //        logingmail = findViewById(R.id.gmaillogin);
 
         // Click listeners
         mSignInButton.setOnClickListener(this);
-        mSignUpButton.setOnClickListener(this);
+//        mSignUpButton.setOnClickListener(this);
+
+        open_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
+            }
+        });
 
         forgot_password.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,16 +74,16 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
 
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        // Check auth on Activity start
-        if (mAuth.getCurrentUser() != null) {
-            onAuthSuccess(mAuth.getCurrentUser());
-            startActivity(new Intent(LoginActivity.this,MainActivity.class));
-        }
-    }
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//
+//        // Check auth on Activity start
+//        if (mAuth.getCurrentUser() != null) {
+//            onAuthSuccess(mAuth.getCurrentUser());
+//            startActivity(new Intent(LoginActivity.this,MainActivity.class));
+//        }
+//    }
 
     private void signIn() {
         Log.d(TAG, "signIn");
@@ -181,9 +190,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         int i = v.getId();
         if (i == R.id.buttonSignIn) {
             signIn();
-        } else if (i == R.id.buttonSignUp) {
-            signUp();
         }
+//        else if (i == R.id.buttonSignUp) {
+//            signUp();
+//        }
     }
 
     @Override

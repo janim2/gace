@@ -177,6 +177,7 @@
                 android:layout_height="50dp"
                 android:textSize="18sp"
                 android:gravity="center"
+                android:id="@+id/see_all_posts"
                 android:textColor="@android:color/black"
                 android:layout_marginTop="17dp"
                 android:text="See All Events" />

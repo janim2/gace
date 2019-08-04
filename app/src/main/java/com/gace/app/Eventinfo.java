@@ -39,7 +39,7 @@ import java.util.ArrayList;
 
 public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
 
-    TextView eventtitle, eventdescription, eventlocation, dateandtime, prize;
+    TextView eventtitle, eventdescription, eventlocation, dateandtime, prize, see_all_posts;
     ImageView eventimage;
     Toolbar goBack;
 
@@ -88,8 +88,6 @@ public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
             case R.id.report:
                 startActivity(new Intent(Eventinfo.this, Report_Activity.class));
                 break;
-
-
         }
         return super.onOptionsItemSelected(item);
     }
@@ -113,6 +111,7 @@ public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
 //        goBack = (Toolbar) findViewById(R.id.goback);
         gotoEvent = (Button) findViewById(R.id.going);
         prize = (TextView) findViewById(R.id.prize);
+        see_all_posts = (TextView) findViewById(R.id.see_all_posts);
 
         seventid = intent.getStringExtra("eventid");
         simage = intent.getStringExtra("theimage");
@@ -139,13 +138,14 @@ public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
         eventlocation.setText(slocation);
         dateandtime.setText(sdate_of_event + " at " + stime_of_event + "GMT");
 
-
-//        goBack.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                finish();
-//            }
-//        });
+        see_all_posts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AllPostActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
 
         if (srate_of_event != null) {
             if (srate_of_event.equals("Free")) {

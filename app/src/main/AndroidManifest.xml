@@ -12,12 +12,15 @@
         android:roundIcon="@mipmap/thelogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Report_Activity"
+        <activity android:name=".AllPostActivity"></activity>
+        <activity
+            android:name=".Report_Activity"
             android:parentActivityName=".Eventinfo"
-            android:theme="@style/AppTheme.YesActionBar"></activity>
-        <activity android:name=".Contact_Organizer"
-            android:theme="@style/AppTheme.YesActionBar"
-            android:parentActivityName=".Eventinfo"/>
+            android:theme="@style/AppTheme.YesActionBar" />
+        <activity
+            android:name=".Contact_Organizer"
+            android:parentActivityName=".Eventinfo"
+            android:theme="@style/AppTheme.YesActionBar" />
         <activity android:name=".OrderComplete" />
         <activity
             android:name=".Continue_Ticketing"
@@ -59,7 +62,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity" />
+        <activity android:name=".RegisterActivity"
+            android:theme="@style/AppTheme.YesActionBar"
+            android:parentActivityName=".LoginActivity"/>
     </application>
 
 </manifest>

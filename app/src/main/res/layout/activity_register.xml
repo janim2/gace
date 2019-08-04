@@ -18,7 +18,17 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginTop="16dp"
-            android:background="@android:color/white" />
+            android:layout_gravity="center"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_gravity="center"
+            android:text="Please fill below form to sign up" />
 
         <EditText
             android:layout_width="match_parent"
@@ -27,7 +37,9 @@
             android:padding="10dp"
             android:background="@drawable/round_edge_stroke"
             android:gravity="center_vertical"
-            android:hint="Name"
+            android:hint="Username"
+            android:textSize="14sp"
+            android:id="@+id/name_input"
             android:textColorHint="@android:color/white" />
 
         <EditText
@@ -37,7 +49,9 @@
             android:layout_marginTop="16dp"
             android:background="@drawable/round_edge_stroke"
             android:gravity="center_vertical"
-            android:hint="Country"
+            android:hint="Email"
+            android:textSize="14sp"
+            android:id="@+id/email_input"
             android:textColorHint="@android:color/white" />
 
         <EditText
@@ -47,7 +61,10 @@
             android:layout_marginTop="16dp"
             android:background="@drawable/round_edge_stroke"
             android:gravity="center_vertical"
-            android:hint="Qualification"
+            android:hint="Mobile Number"
+            android:textSize="14sp"
+            android:inputType="phone"
+            android:id="@+id/mobile_input"
             android:textColorHint="@android:color/white" />
 
         <EditText
@@ -57,7 +74,43 @@
             android:layout_marginTop="16dp"
             android:background="@drawable/round_edge_stroke"
             android:gravity="center_vertical"
-            android:hint="Employer"
+            android:textSize="14sp"
+            android:hint="Location"
+            android:id="@+id/location_input"
+            android:textColorHint="@android:color/white" />
+
+
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/white"
+            android:text="Gender" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="5dp"
+            android:textSize="14sp"
+            android:id="@+id/gender"
+            android:background="@drawable/round_edge_stroke"
+            android:gravity="center_vertical" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/round_edge_stroke"
+            android:gravity="center_vertical"
+            android:hint="Password"
+            android:textSize="14sp"
+            android:id="@+id/password_input"
+            android:inputType="textPassword"
             android:textColorHint="@android:color/white" />
 
         <EditText
@@ -67,17 +120,10 @@
             android:layout_marginTop="16dp"
             android:background="@drawable/round_edge_stroke"
             android:gravity="center_vertical"
-            android:hint="Keen Subject Area"
-            android:textColorHint="@android:color/white" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:padding="10dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/round_edge_stroke"
-            android:gravity="center_vertical"
-            android:hint="Level of Subject Teaching"
+            android:hint="Confirm Password"
+            android:id="@+id/confirm_password_input"
+            android:textSize="14sp"
+            android:inputType="textPassword"
             android:textColorHint="@android:color/white" />
 
         <Button
@@ -86,10 +132,17 @@
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/round_edge"
-            android:text="Login"
+            android:text="REGISTER"
+            android:id="@+id/register"
             android:textColor="@color/colorPrimaryDark"
-            android:textSize="15sp"
+            android:textSize="14sp"
             android:textStyle="bold" />
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/loading"
+            android:visibility="gone"/>
 
     </LinearLayout>
 

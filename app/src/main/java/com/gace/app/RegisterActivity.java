@@ -113,8 +113,6 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Password Mismatch",Toast.LENGTH_SHORT).show();
                 }
 
-
-
                 firebaseAuth.createUserWithEmailAndPassword(emailString,passwordString).addOnCompleteListener(RegisterActivity.this,
                         new OnCompleteListener<AuthResult>() {
                             @Override
@@ -122,7 +120,9 @@ public class RegisterActivity extends AppCompatActivity {
                                 if (!task.isSuccessful()){
                                 }else {
                                     saveUserDetails();
-//                                    sendEmailVerification();
+//                                    startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+
+                                    sendEmailVerification();
 //                                    startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
                                 }
                             }
@@ -143,8 +143,9 @@ public class RegisterActivity extends AppCompatActivity {
 
                             // after email is sent just logout the user and finish this activity
                             Toast.makeText(RegisterActivity.this,"Verification Email Sent", Toast.LENGTH_LONG).show();
-//                            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-//                            finish();
+                            FirebaseAuth.getInstance().signOut();
+                            finish();
+                            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                         }
                         else
                         {
@@ -162,7 +163,6 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void saveUserDetails(){
-
         databaseReference = FirebaseDatabase.getInstance().getReference();
         databaseReference.child("user").child("username").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -177,7 +177,6 @@ public class RegisterActivity extends AppCompatActivity {
                     RegisterModel registerModel = new RegisterModel(nameString,emailString,mobileString,locationString,genderString);
                     databaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(registerModel);
 
-
                     name.setText("");
                     email.setText("");
                     mobile.setText("");
@@ -187,7 +186,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                     loading.setVisibility(View.GONE);
                     Toast.makeText(getApplicationContext(),"Registration successful",Toast.LENGTH_SHORT).show();
-                    finish();
+//                    finish();
 //                    startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
 //                    sendEmailVerification();
                 }

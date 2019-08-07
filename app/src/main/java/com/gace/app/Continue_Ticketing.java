@@ -31,12 +31,15 @@ public class Continue_Ticketing extends BaseActivity {
     DatabaseReference reference;
 
     FirebaseUser firebaseUser;
+    Accessories accessories;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_continue__ticketing);
         getSupportActionBar().setTitle("Finish Ticketing");
+
+        accessories = new Accessories(Continue_Ticketing.this);
 
         first_name = (EditText)findViewById(R.id.first);
         last_name = (EditText)findViewById(R.id.last);
@@ -49,11 +52,11 @@ public class Continue_Ticketing extends BaseActivity {
 
         thecontinueIntent = getIntent();
 
-        event_name = thecontinueIntent.getStringExtra("event_name");
-        event_ID = thecontinueIntent.getStringExtra("eventID");
-        event_prize = thecontinueIntent.getStringExtra("event_prize");
-        event_ticket_quantity = thecontinueIntent.getStringExtra("ticket_quantity");
-        event_ticket_type = thecontinueIntent.getStringExtra("ticket_type");
+        event_name = accessories.getString("thetitle");
+        event_ID = accessories.getString("eventid");
+        event_prize = accessories.getString("event_prize");
+        event_ticket_quantity = accessories.getString("ticket_quantity");
+        event_ticket_type = accessories.getString("ticket_type");
 
         //        reference to the ticket node
         reference = FirebaseDatabase.getInstance().getReference("ticket");
@@ -73,16 +76,6 @@ public class Continue_Ticketing extends BaseActivity {
                 save_to_register();
             }
         });
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Intent intent= new Intent();
-        intent.putExtra("event_name",event_name);
-        intent.putExtra("event_prize",event_prize);
-        setResult(RESULT_OK,intent);
-        finish();
     }
 
     private void save_to_register() {

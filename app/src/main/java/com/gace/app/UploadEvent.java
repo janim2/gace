@@ -201,6 +201,7 @@ public class UploadEvent extends BaseActivity implements DatePickerDialog.OnDate
                 reference.child("prize").setValue(sevent_prize);
                 reference.child("date").setValue(sevent_date);
                 reference.child("time").setValue(sevent_time);
+                reference.child("likes").setValue("0");
             }
         }catch (NullPointerException e){
 

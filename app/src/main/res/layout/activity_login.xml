@@ -116,13 +116,14 @@
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/round_edge"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:text="Gmail"
+            android:text="Resend Verification Email"
             android:textColor="@android:color/white"
-            android:textSize="16sp"
+            android:textSize="13sp"
+            android:id="@+id/resend_verification"
             android:textStyle="bold"
             android:visibility="gone" />
     </LinearLayout>

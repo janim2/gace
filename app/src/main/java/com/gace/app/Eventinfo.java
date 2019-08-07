@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -39,7 +40,7 @@ import java.util.ArrayList;
 
 public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
 
-    TextView eventtitle, eventdescription, eventlocation, dateandtime, prize, see_all_posts;
+    TextView eventtitle, eventdescription, eventlocation, eventlikes,dateandtime, prize, see_all_posts;
     ImageView eventimage;
     Toolbar goBack;
 
@@ -55,18 +56,44 @@ public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
     ArrayList relatedParts = new ArrayList<Post>();
     RecyclerView related_items_RecyclerView;
     RecyclerView.Adapter related_items_mPostAdapter;
-    String title,description,user,location,imageurl,rate,sprize,the_date,the_time;
+    String title,description,user,location,slikes,imageurl,rate,sprize,the_date,the_time;
 
     private float downXpos = 0;
     private float downYpos = 0;
     private boolean touchcaptured = false;
+    String check_uncheck_favourites = "0";
 
+    Accessories accessories;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.event_info_menu,menu);
+        String checking_if_liked = accessories.getString(seventid+"i_have_liked_it");
+        MenuItem favour = menu.findItem(R.id.favourites);
+
+        if(checking_if_liked!=null){
+            if(checking_if_liked.equals("no")){
+                favour.setIcon(getResources().getDrawable(R.drawable.done_favourites));
+            }else{
+                favour.setIcon(getResources().getDrawable(R.drawable.favourites));
+            }
+        }else{
+            favour.setIcon(getResources().getDrawable(R.drawable.done_favourites));
+        }
+
         return super.onCreateOptionsMenu(menu);
     }
+
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        String checking_if_liked = accessories.getString(seventid+"i_have_liked_it");
+//        if(checking_if_liked!=null){
+//
+//        }
+//
+//
+//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -88,15 +115,56 @@ public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
             case R.id.report:
                 startActivity(new Intent(Eventinfo.this, Report_Activity.class));
                 break;
+
+            case R.id.favourites:
+                if(check_uncheck_favourites.equals("0")){
+                    check_uncheck_favourites = "1";
+                    if(add_to_favourites(slikes)){
+                        item.setIcon(getResources().getDrawable(R.drawable.done_favourites));
+                    }
+                }
+                else if(check_uncheck_favourites.equals("1")){
+                    check_uncheck_favourites = "0";
+                    if(remove_from_favourites(slikes)){
+                        item.setIcon(getResources().getDrawable(R.drawable.favourites));
+                    }
+                }
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
+
+    public boolean add_to_favourites(String number_of_likes){
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("post");
+        number_of_likes = String.valueOf(Integer.valueOf(number_of_likes) + 1);
+        accessories.put("thelikes",number_of_likes);
+        eventlikes.setText(number_of_likes);
+        accessories.put(seventid+"i_have_liked_it","yes");
+        databaseReference.child(seventid).child("likes").setValue(number_of_likes);
+      return true;
+    }
+
+    public boolean remove_from_favourites(String number_of_likes){
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("post");
+            number_of_likes = String.valueOf(Integer.valueOf(accessories.getString("thelikes")) - 1);
+            accessories.put("thelikes",number_of_likes);
+            eventlikes.setText(number_of_likes);
+            accessories.put(seventid+"i_have_liked_it","no");
+            databaseReference.child(seventid).child("likes").setValue(number_of_likes);
+//        }
+
+        return true;
+    }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eventinfo);
         Intent intent = getIntent();
+
+        accessories = new Accessories(Eventinfo.this);
 
         //settings for google maps
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -106,6 +174,7 @@ public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
         eventtitle = (TextView) findViewById(R.id.eventtitle);
         eventdescription = (TextView) findViewById(R.id.description);
         eventlocation = (TextView) findViewById(R.id.location);
+        eventlikes = (TextView) findViewById(R.id.eventlikes);
         dateandtime = (TextView) findViewById(R.id.timeanddate);
         eventimage = (ImageView) findViewById(R.id.eventimage);
 //        goBack = (Toolbar) findViewById(R.id.goback);
@@ -113,16 +182,17 @@ public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
         prize = (TextView) findViewById(R.id.prize);
         see_all_posts = (TextView) findViewById(R.id.see_all_posts);
 
-        seventid = intent.getStringExtra("eventid");
-        simage = intent.getStringExtra("theimage");
-        stitle = intent.getStringExtra("thetitle");
-        sdescription = intent.getStringExtra("thedescription");
-        slocation = intent.getStringExtra("thelocation");
-        stheuser = intent.getStringExtra("theuser");
-        srate_of_event = intent.getStringExtra("therate");
-        sprize_of_event = intent.getStringExtra("theprize");
-        sdate_of_event = intent.getStringExtra("thedate");
-        stime_of_event = intent.getStringExtra("thetime");
+        seventid = accessories.getString("eventid");
+        simage = accessories.getString("theimage");
+        stitle = accessories.getString("thetitle");
+        sdescription = accessories.getString("thedescription");
+        slocation = accessories.getString("thelocation");
+        slikes = accessories.getString("thelikes");
+        stheuser = accessories.getString("theuser");
+        srate_of_event = accessories.getString("therate");
+        sprize_of_event = accessories.getString("theprize");
+        sdate_of_event = accessories.getString("thedate");
+        stime_of_event = accessories.getString("thetime");
 
         DisplayImageOptions theImageOptions = new DisplayImageOptions.Builder().cacheInMemory(true).
                 cacheOnDisk(true).build();
@@ -136,6 +206,7 @@ public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
         eventtitle.setText(stitle);
         eventdescription.setText(sdescription);
         eventlocation.setText(slocation);
+        eventlikes.setText(slikes);
         dateandtime.setText(sdate_of_event + " at " + stime_of_event + "GMT");
 
         see_all_posts.setOnClickListener(new View.OnClickListener() {
@@ -305,7 +376,9 @@ public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
                                 location = child.getValue().toString();
                             }
 
-
+                            if(child.getKey().equals("likes")){
+                                slikes = child.getValue().toString();
+                            }
 
                             if(child.getKey().equals("prize")){
                                 sprize = child.getValue().toString();
@@ -326,7 +399,7 @@ public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
                         if(rate.equals(srate_of_event)){
                             String eventid = key;
 
-                            Post obj = new Post(eventid,imageurl,description,location,title,user,rate,sprize,the_date,the_time);
+                            Post obj = new Post(eventid,imageurl,description,location,slikes,title,user,rate,sprize,the_date,the_time);
                             relatedParts.add(obj);
                             related_items_RecyclerView.setAdapter(related_items_mPostAdapter);
                             related_items_mPostAdapter.notifyDataSetChanged();

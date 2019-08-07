@@ -3,6 +3,7 @@
     package="com.gace.app">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
@@ -33,7 +34,7 @@
 
         <activity
             android:name=".BuyTicket"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".Eventinfo"
             android:theme="@style/AppTheme.YesActionBar" />
         <activity android:name=".Reset_password" />
         <activity
@@ -46,7 +47,7 @@
             android:theme="@style/AppTheme.YesActionBar" />
         <activity
             android:name=".EventRegistration"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".Eventinfo"
             android:theme="@style/AppTheme.YesActionBar" />
         <activity
             android:name=".Eventinfo"

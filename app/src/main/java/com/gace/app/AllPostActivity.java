@@ -47,6 +47,10 @@ public class AllPostActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(this,LinearLayoutManager.VERTICAL));
+
+        adapter = new RecyclerViewAdapter(AllPostActivity.this,postList);
+        recyclerView.setAdapter(adapter);
+
         databaseReference = FirebaseDatabase.getInstance().getReference("post");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -56,8 +60,6 @@ public class AllPostActivity extends AppCompatActivity {
                     postList.add(post);
                 }
 
-                adapter = new RecyclerViewAdapter(AllPostActivity.this,postList);
-                recyclerView.setAdapter(adapter);
             }
 
             @Override

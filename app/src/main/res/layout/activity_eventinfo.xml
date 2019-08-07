@@ -48,6 +48,19 @@
                 android:layout_marginTop="20dp"
                 android:textColor="@android:color/black"/>
 
+             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1"
+                 android:drawableLeft="@drawable/favourites"
+                android:id="@+id/eventlikes"
+                 android:drawablePadding="10dp"
+                android:textSize="14sp"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/colorPrimaryDark"/>
+
+
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0.001dp"

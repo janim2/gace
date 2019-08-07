@@ -43,7 +43,7 @@ public class Search_Activity extends AppCompatActivity{ //implements AbsListView
     RecyclerView.Adapter mPostAdapter;
     RecyclerView.LayoutManager mPostLayoutManager;
     ArrayList resultPost = new ArrayList<Post>();
-    String title,user,location,rate,prize,the_date,the_time;
+    String title,user,location,likes,rate,prize,the_date,the_time;
     ProgressBar loading;
     FirebaseUser firebaseUser;
 
@@ -123,6 +123,11 @@ public class Search_Activity extends AppCompatActivity{ //implements AbsListView
                                 location = child.getValue().toString();
                             }
 
+                            if(child.getKey().equals("likes")){
+                                likes = child.getValue().toString();
+                            }
+
+
                             if(child.getKey().equals("rate")){
                                 rate = child.getValue().toString();
                             }
@@ -145,7 +150,7 @@ public class Search_Activity extends AppCompatActivity{ //implements AbsListView
 
                         String eventid = key;
 
-                        Post obj = new Post(eventid,imageurl,description,location,title,user,rate,prize,the_date,the_time);
+                        Post obj = new Post(eventid,imageurl,description,location,likes,title,user,rate,prize,the_date,the_time);
                         resultPost.add(obj);
                         PostRecyclerView.setAdapter(mPostAdapter);
                         mPostAdapter.notifyDataSetChanged();

@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.gace.app.Accessories;
 import com.gace.app.Eventinfo;
 import com.gace.app.R;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -22,6 +23,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
     ArrayList<Post> itemList;
     Context context;
     ImageLoader imageLoader = ImageLoader.getInstance();
+    Accessories accessories;
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         View view;
@@ -75,17 +77,20 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
         image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                accessories = new Accessories(v.getContext());
+
                 Intent intent = new Intent(v.getContext(), Eventinfo.class);
-                intent.putExtra("eventid",itemList.get(position).getEventid());
-                intent.putExtra("theimage",itemList.get(position).getImage());
-                intent.putExtra("thetitle",itemList.get(position).getTitle());
-                intent.putExtra("thedescription",itemList.get(position).getDescription());
-                intent.putExtra("thelocation",itemList.get(position).getLocation());
-                intent.putExtra("theuser",itemList.get(position).getUser());
-                intent.putExtra("therate",itemList.get(position).getRate());
-                intent.putExtra("theprize",itemList.get(position).getPrize());
-                intent.putExtra("thedate",itemList.get(position).getDate());
-                intent.putExtra("thetime",itemList.get(position).getTime());
+                accessories.put("eventid",itemList.get(position).getEventid());
+                accessories.put("theimage",itemList.get(position).getImage());
+                accessories.put("thetitle",itemList.get(position).getTitle());
+                accessories.put("thelikes",itemList.get(position).getLikes());
+                accessories.put("thedescription",itemList.get(position).getDescription());
+                accessories.put("thelocation",itemList.get(position).getLocation());
+                accessories.put("theuser",itemList.get(position).getUser());
+                accessories.put("therate",itemList.get(position).getRate());
+                accessories.put("theprize",itemList.get(position).getPrize());
+                accessories.put("thedate",itemList.get(position).getDate());
+                accessories.put("thetime",itemList.get(position).getTime());
                 v.getContext().startActivity(intent);
             }
         });

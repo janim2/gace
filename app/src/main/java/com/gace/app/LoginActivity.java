@@ -32,6 +32,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     private EditText mPasswordField;
     private Button mSignInButton;
     private Button mSignUpButton, loginface, logingmail;
+    public  Button resend_verfication;
     TextView open_register,forgot_password;
 
 
@@ -40,8 +41,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
+
+//        app was crushing here in the login because this database reference wasnt found
+//        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         // Views
         mEmailField = findViewById(R.id.fieldEmail);
@@ -50,6 +53,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
 //        mSignUpButton = findViewById(R.id.buttonSignUp);
         open_register = findViewById(R.id.open_register);
         forgot_password = findViewById(R.id.forgot_password);
+        resend_verfication = findViewById(R.id.resend_verification);
 //        loginface = findViewById(R.id.facebooklogin);
 //        logingmail = findViewById(R.id.gmaillogin);
 
@@ -71,19 +75,60 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
             }
         });
 
+//        resend_verfication.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                try{
+//                    FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+//                    if(firebaseAuth.getCurrentUser().isEmailVerified()){
+//
+//                    }else{
+//                        firebaseAuth.getCurrentUser().sendEmailVerification()
+//                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+//                                    @Override
+//                                    public void onComplete(@NonNull Task<Void> task) {
+//                                        if (task.isSuccessful()) {
+//                                            // email sent
+//
+//                                            // after email is sent just logout the user and finish this activity
+//                                            Toast.makeText(LoginActivity.this,"Verification Email ReSent", Toast.LENGTH_LONG).show();
+////                                            FirebaseAuth.getInstance().signOut();
+//                                        }
+//
+//                                        else
+//                                        {
+//                                            // email not sent, so display message and restart the activity or do whatever you wish to do
+//
+//                                            //restart this activity
+//                                            overridePendingTransition(0, 0);
+//                                            finish();
+//                                            overridePendingTransition(0, 0);
+//                                            startActivity(getIntent());
+//
+//                                        }
+//                                    }
+//                                });
+//                    }
+//
+//                }catch (NullPointerException e){
+//
+//                }
+//            }
+//        });
+
 
     }
-
-//    @Override
-//    public void onStart() {
-//        super.onStart();
 //
-//        // Check auth on Activity start
-//        if (mAuth.getCurrentUser() != null) {
-//            onAuthSuccess(mAuth.getCurrentUser());
-//            startActivity(new Intent(LoginActivity.this,MainActivity.class));
-//        }
-//    }
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // Check auth on Activity start
+        if (mAuth.getCurrentUser() != null) {
+            onAuthSuccess(mAuth.getCurrentUser());
+            startActivity(new Intent(LoginActivity.this,MainActivity.class));
+        }
+    }
 
     private void signIn() {
         Log.d(TAG, "signIn");
@@ -180,7 +225,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     // [START basic_write]
     private void writeNewUser(String userId, String name, String email) {
         User user = new User(name, email);
-
+        mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("users").child(userId).setValue(user);
     }
     // [END basic_write]

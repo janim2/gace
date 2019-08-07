@@ -34,6 +34,7 @@ public class BuyTicket extends AppCompatActivity {
     String[] type_list = {"General Admission", "VIP", "Reserved Seats","Early Bird Discount",
     "Coded Discount","Multi-day Pass"};
     String[] quantity_list = {"1","2","3","4"};
+    Accessories accessories;
 
 //    @Override
 //    public void onBackPressed() {
@@ -53,14 +54,16 @@ public class BuyTicket extends AppCompatActivity {
         setContentView(R.layout.activity_buy_ticket);
         getSupportActionBar().setTitle("Ticketing");
 
+        accessories = new Accessories(BuyTicket.this);
         buyticketIntent = getIntent();
         title = (TextView)findViewById(R.id.event_title);
         price = (TextView)findViewById(R.id.event_price);
         sucess_message = (TextView)findViewById(R.id.sucess_message);
 
-        eventID = buyticketIntent.getStringExtra("usethis_id");
-        eventTitle = buyticketIntent.getStringExtra("useevent_name");
-        eventPrice = buyticketIntent.getStringExtra("useeent_prize");
+
+        eventID = accessories.getString("eventid");
+        eventTitle = accessories.getString("thetitle");
+        eventPrice = accessories.getString("theprize");
 
 //        getting views
         typeSpinner = (Spinner)findViewById(R.id.ticket_spinner);
@@ -122,32 +125,15 @@ public class BuyTicket extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                     Intent continue_registration = new Intent(BuyTicket.this, Continue_Ticketing.class);
-                    continue_registration.putExtra("eventID",eventID);
-                    continue_registration.putExtra("event_name",eventTitle);
-                    continue_registration.putExtra("event_prize",total_prize);
-                    continue_registration.putExtra("ticket_quantity",quantity);
-                    continue_registration.putExtra("ticket_type",type);
+//                    continue_registration.putExtra("eventID",eventID);
+//                    continue_registration.putExtra("event_name",eventTitle);
+                    accessories.put("event_prize",total_prize);
+                    accessories.put("ticket_quantity",quantity);
+                    accessories.put("ticket_type",type);
                     startActivityForResult(continue_registration,100);
             }
         });
 
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 100 && resultCode == Activity.RESULT_OK){
-            try{
-                assert data != null;
-                eventTitle=data.getStringExtra("useevent_name");
-                eventPrice=data.getStringExtra("useeent_prize");
-                title.setText(eventTitle);
-                price.setText(eventPrice);
-            }catch (NullPointerException e){
-
-            }
-
-        }
-
-    }
 }

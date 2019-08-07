@@ -13,6 +13,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -38,7 +40,7 @@ public class MainActivity extends BaseActivity {
     RecyclerView.Adapter mPostAdapter;
     RecyclerView.LayoutManager mPostLayoutManager;
     ArrayList resultPost = new ArrayList<Post>();
-    String title,description,user,location,imageurl,rate,prize,the_date,the_time;
+    String title,description,user,location,likes,imageurl,rate,prize,the_date,the_time;
     ProgressBar loading;
     FirebaseUser firebaseUser;
 
@@ -58,6 +60,7 @@ public class MainActivity extends BaseActivity {
                 FirebaseAuth.getInstance().signOut();
                 Toast.makeText(MainActivity.this,"Verify Email",Toast.LENGTH_LONG).show();
                 startActivity(new Intent(MainActivity.this,LoginActivity.class));
+
             }
         }
     }
@@ -202,6 +205,10 @@ public class MainActivity extends BaseActivity {
                                 location = child.getValue().toString();
                             }
 
+                            if(child.getKey().equals("likes")){
+                                likes = child.getValue().toString();
+                            }
+
                             if(child.getKey().equals("rate")){
                                 rate = child.getValue().toString();
                             }
@@ -224,7 +231,7 @@ public class MainActivity extends BaseActivity {
 
                         String eventid = key;
 
-                        Post obj = new Post(eventid,imageurl,description,location,title,user,rate,prize,the_date,the_time);
+                        Post obj = new Post(eventid,imageurl,description,location,likes,title,user,rate,prize,the_date,the_time);
                         resultPost.add(obj);
                         PostRecyclerView.setAdapter(mPostAdapter);
                         mPostAdapter.notifyDataSetChanged();

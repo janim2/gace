@@ -12,6 +12,7 @@ public class Post {
     public String image;
     public String description;
     public String location;
+    public String likes;
     public String title;
     public String user;
     public String rate;
@@ -19,15 +20,18 @@ public class Post {
     public String date;
     public String time;
 
+    public Post(){
 
+    }
 
-    public Post(String eventid, String image,String description, String location,String title,
+    public Post(String eventid, String image,String description, String location,String likes,String title,
                 String user,String rate,String prize,String date, String time) {
 
         this.eventid = eventid;
         this.image = image;
         this.description = description;
         this.location = location;
+        this.likes = likes;
         this.title = title;
         this.user = user;
         this.rate = rate;
@@ -51,6 +55,8 @@ public class Post {
 //    public void setLocation(String location) { this.location= location; }
 
     public String getTitle() { return title; }
+
+    public String getLikes() { return likes; }
 //    public void setTitle(String title) { this.title = title; }
 
      public String getUser() { return user; }

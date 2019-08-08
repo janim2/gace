@@ -230,10 +230,9 @@ public class EventRegistration extends AppCompatActivity {
 
     }
 
-
     private boolean uploadtoDatabase() {
-        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("eventgoers").child(eventid);
-        userRef.child("userid").setValue(userId);
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child("eventgoers").child(eventid).child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+//        userRef.child("userid").setValue(userId);
         userRef.child("name").setValue(sname);
         userRef.child("email").setValue(semail);
         userRef.child("telephone").setValue(stelephone);

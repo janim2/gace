@@ -59,11 +59,18 @@
                 android:layout_marginTop="20dp"
                 android:textColor="@color/colorPrimaryDark"/>
 
-
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/number_going"
+                 android:drawablePadding="10dp"
+                android:textSize="14sp"
+                android:layout_marginTop="15dp"
+                android:textColor="@color/colorPrimaryDark"/>
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="0.001dp"
+                android:layout_height="0.01dp"
                 android:layout_marginTop="30dp"
                 android:background="@android:color/transparent"/>
 

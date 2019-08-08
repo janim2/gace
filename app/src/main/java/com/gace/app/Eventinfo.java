@@ -25,6 +25,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -40,7 +41,8 @@ import java.util.ArrayList;
 
 public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
 
-    TextView eventtitle, eventdescription, eventlocation, eventlikes,dateandtime, prize, see_all_posts;
+    TextView eventtitle, eventdescription, eventlocation, eventlikes,dateandtime, prize,
+            see_all_posts,numbergoingTextView;
     ImageView eventimage;
     Toolbar goBack;
 
@@ -64,6 +66,7 @@ public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
     String check_uncheck_favourites = "0";
 
     Accessories accessories;
+    int counter = 0;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -181,6 +184,7 @@ public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
         gotoEvent = (Button) findViewById(R.id.going);
         prize = (TextView) findViewById(R.id.prize);
         see_all_posts = (TextView) findViewById(R.id.see_all_posts);
+        numbergoingTextView = (TextView) findViewById(R.id.number_going);
 
         seventid = accessories.getString("eventid");
         simage = accessories.getString("theimage");
@@ -212,7 +216,7 @@ public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
         see_all_posts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AllPostActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
@@ -262,6 +266,7 @@ public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
 //        related_items_RecyclerView.setLayoutManager(related_items_mPostLayoutManager);
         try {
             getRelatedItems_ID();
+            getNumberof_Persons_going();
         }catch (NullPointerException e){
 
         }
@@ -308,6 +313,52 @@ public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
         });
         related_items_RecyclerView.setAdapter(related_items_mPostAdapter);
 //        related ends here
+    }
+
+    private void getNumberof_Persons_going() {
+        DatabaseReference numberofpersons = FirebaseDatabase.getInstance().getReference("eventgoers");
+        numberofpersons.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    for(DataSnapshot child : dataSnapshot.getChildren()){
+                        getCount(child.getKey());
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void getCount(String key) {
+        DatabaseReference thereference =FirebaseDatabase.getInstance().getReference("eventgoers").child(key);
+        thereference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    for(DataSnapshot child : dataSnapshot.getChildren()){
+                        if(child.getKey()!=null){
+                            if(child.getKey().length() > 15){
+                                counter += 1;
+                            }
+//                                Toast.makeText(Eventinfo.this,child.getKey(),Toast.LENGTH_LONG).show();
+//                            numbergoingTextView.setText(child.getChildrenCount()+""+" persons going");
+                        }
+                    }
+                    numbergoingTextView.setText(String.valueOf(counter)+" person(s) going");
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     private void getRelatedItems_ID() {

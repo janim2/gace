@@ -1,11 +1,15 @@
 package com.gace.app;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -239,6 +243,7 @@ public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
             } else {
                 gotoEvent.setText("Ticket");
                 prize.setText(sprize_of_event);
+                numbergoingTextView.setVisibility(View.GONE);
                 gotoEvent.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -322,7 +327,13 @@ public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
                     for(DataSnapshot child : dataSnapshot.getChildren()){
-                        getCount(child.getKey());
+                        if(child.getKey().equals(seventid)){
+                            getCount(child.getKey());
+                        }else{
+                            Spannable befirst = new SpannableString("No persons going yet! BE THE FIRST");
+                            befirst.setSpan(new ForegroundColorSpan(Color.BLACK), 22, 34, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                            numbergoingTextView.setText(befirst);
+                        }
                     }
                 }
             }

@@ -259,7 +259,6 @@ public class MainActivity extends BaseActivity {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
-
     public ArrayList<Post> getPosts(){
         return  resultPost;
     }

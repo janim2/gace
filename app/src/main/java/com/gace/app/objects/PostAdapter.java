@@ -53,6 +53,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
         ImageView image = holder.view.findViewById(R.id.image);
         TextView description = holder.view.findViewById(R.id.discription);
         TextView location = holder.view.findViewById(R.id.location);
+        TextView event_tag = holder.view.findViewById(R.id.event_tag);
 
 //        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
 //        storageReference.child("images/").child(itemList.get(position).getImage());
@@ -66,6 +67,10 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
                 defaultDisplayImageOptions(theImageOptions).build();
         ImageLoader.getInstance().init(config);
 //
+        if(itemList.get(position).getRate().equals("Free")){
+            event_tag.setVisibility(View.GONE);
+        }
+
         String imagelink = itemList.get(position).getImage();
         imageLoader.displayImage(imagelink,image);
 

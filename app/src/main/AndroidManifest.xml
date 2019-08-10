@@ -13,7 +13,14 @@
         android:roundIcon="@mipmap/thelogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AllPostActivity"></activity>
+        <activity android:name=".EventReviews"
+            android:theme="@style/AppTheme.YesActionBar"
+            android:parentActivityName=".Eventinfo">
+        </activity>
+        <activity android:name=".AddEventReview"
+            android:theme="@style/AppTheme.YesActionBar"
+            android:parentActivityName=".Eventinfo"/>
+        <activity android:name=".AllPostActivity" />
         <activity
             android:name=".Report_Activity"
             android:parentActivityName=".Eventinfo"
@@ -63,9 +70,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity"
-            android:theme="@style/AppTheme.YesActionBar"
-            android:parentActivityName=".LoginActivity"/>
+        <activity
+            android:name=".RegisterActivity"
+            android:parentActivityName=".LoginActivity"
+            android:theme="@style/AppTheme.YesActionBar" />
     </application>
 
 </manifest>

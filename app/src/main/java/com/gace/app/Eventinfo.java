@@ -22,6 +22,8 @@ import android.widget.Toast;
 
 import com.gace.app.objects.Post;
 import com.gace.app.objects.RelatedPostAdapter;
+import com.gace.app.objects.ReviewAdapter;
+import com.gace.app.objects.Reviews;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -46,12 +48,12 @@ import java.util.ArrayList;
 public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
 
     TextView eventtitle, eventdescription, eventlocation, eventlikes,dateandtime, prize,
-            see_all_posts,numbergoingTextView;
+            see_all_posts,numbergoingTextView, see_all_reviewsTextView;
     ImageView eventimage;
     Toolbar goBack;
 
     ImageLoader loader = ImageLoader.getInstance();
-    Button gotoEvent;
+    Button gotoEvent, no_reviews;
     String seventid, simage, stitle, sdescription, slocation,stheuser ,sdatetime,
             srate_of_event,sprize_of_event,sdate_of_event,stime_of_event;
 
@@ -59,10 +61,10 @@ public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
     GoogleApiClient mGoogleApiClient;
 
     //related Items variables here
-    ArrayList relatedParts = new ArrayList<Post>();
-    RecyclerView related_items_RecyclerView;
-    RecyclerView.Adapter related_items_mPostAdapter;
-    String title,description,user,location,slikes,imageurl,rate,sprize,the_date,the_time;
+    private ArrayList relatedParts = new ArrayList<Post>();
+    private RecyclerView related_items_RecyclerView;
+    private RecyclerView.Adapter related_items_mPostAdapter;
+    private String title,description,user,location,slikes,imageurl,rate,sprize,the_date,the_time;
 
     private float downXpos = 0;
     private float downYpos = 0;
@@ -71,6 +73,15 @@ public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
 
     Accessories accessories;
     int counter = 0;
+
+    //variables for loading reviews from database
+    private ArrayList reviewsArray = new ArrayList<Reviews>();
+    private RecyclerView review_RecyclerView;
+    private RecyclerView.Adapter reviewAdapter;
+    private RecyclerView.LayoutManager review_mPostLayoutManager;
+    private String review_name, review_message, review_title;
+
+    //variables ends here
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -90,17 +101,6 @@ public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
 
         return super.onCreateOptionsMenu(menu);
     }
-
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        String checking_if_liked = accessories.getString(seventid+"i_have_liked_it");
-//        if(checking_if_liked!=null){
-//
-//        }
-//
-//
-//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -186,9 +186,11 @@ public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
         eventimage = (ImageView) findViewById(R.id.eventimage);
 //        goBack = (Toolbar) findViewById(R.id.goback);
         gotoEvent = (Button) findViewById(R.id.going);
+        no_reviews = (Button) findViewById(R.id.no_reviews);
         prize = (TextView) findViewById(R.id.prize);
         see_all_posts = (TextView) findViewById(R.id.see_all_posts);
         numbergoingTextView = (TextView) findViewById(R.id.number_going);
+        see_all_reviewsTextView = (TextView) findViewById(R.id.see_all);
 
         seventid = accessories.getString("eventid");
         simage = accessories.getString("theimage");
@@ -216,6 +218,20 @@ public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
         eventlocation.setText(slocation);
         eventlikes.setText(slikes);
         dateandtime.setText(sdate_of_event + " at " + stime_of_event + "GMT");
+
+        no_reviews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Eventinfo.this,AddEventReview.class));
+            }
+        });
+
+        see_all_reviewsTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Eventinfo.this,EventReviews.class));
+            }
+        });
 
         see_all_posts.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -272,6 +288,7 @@ public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
         try {
             getRelatedItems_ID();
             getNumberof_Persons_going();
+            getCustomerReview_ID();
         }catch (NullPointerException e){
 
         }
@@ -318,6 +335,17 @@ public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
         });
         related_items_RecyclerView.setAdapter(related_items_mPostAdapter);
 //        related ends here
+
+        //values for fetching feeds from database
+        review_RecyclerView = (RecyclerView) findViewById(R.id.customer_reviewRecycler);
+        no_reviews = (Button) findViewById(R.id.no_reviews);
+
+        review_RecyclerView.setHasFixedSize(true);
+
+        reviewAdapter = new ReviewAdapter(getReviewsFromDatabase(),Eventinfo.this);
+        review_RecyclerView.setAdapter(reviewAdapter);
+        //values ends here
+
     }
 
     private void getNumberof_Persons_going() {
@@ -484,6 +512,76 @@ public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
 
     }
 
+    private void getCustomerReview_ID() {
+        DatabaseReference partdatabase = FirebaseDatabase.getInstance().getReference("review").child(seventid);
+
+        partdatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    for(DataSnapshot child : dataSnapshot.getChildren()){
+//                        Toast.makeText(ItemReview.this,child.getKey(),Toast.LENGTH_LONG).show();
+                        if(child.getKey().length() > 15){
+                            get3ReviewsNow(child.getKey());
+                        }
+                    }
+                }else{
+//                    Toast.makeText(getActivity(),"Cannot get ID",Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(Eventinfo.this,"Cancelled",Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
+
+    private void get3ReviewsNow(String key) {
+        DatabaseReference postData = FirebaseDatabase.getInstance().getReference("review").child(seventid).child(key);
+
+        //restricting the number of reviews that are fetched from the database with a query
+        Query getOnly_three = postData.limitToFirst(3);
+
+        getOnly_three.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.exists()){
+                    for(DataSnapshot child : dataSnapshot.getChildren()){
+                        if(child.getKey().equals("message")){
+                            review_message = child.getValue().toString();
+                        }
+
+                        if(child.getKey().equals("title")){
+                            review_title = child.getValue().toString();
+                        }
+
+                        if(child.getKey().equals("name")){
+                            review_name = child.getValue().toString();
+                        }
+
+                        else{
+//                            Toast.makeText(getActivity(),"Couldn't fetch posts",Toast.LENGTH_LONG).show();
+                        }
+                    }
+
+                    Reviews obj = new Reviews(review_message,review_title,review_name);
+                    reviewsArray.add(obj);
+                    review_RecyclerView.setAdapter(reviewAdapter);
+                    reviewAdapter.notifyDataSetChanged();
+                    no_reviews.setText("GIVE YOUR FEEDBACK");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(Eventinfo.this,"Cancelled",Toast.LENGTH_LONG).show();
+
+            }
+        });
+    }
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
@@ -503,5 +601,7 @@ public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
         return  relatedParts;
     }
 
-
+    public ArrayList<Reviews> getReviewsFromDatabase(){
+        return  reviewsArray;
+    }
 }

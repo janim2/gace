@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddEventReview">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Share your views about the event?"
+            android:textSize="14sp"
+            android:textColor="@android:color/black"
+            android:gravity="center"/>
+
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/loading"
+            android:visibility="gone"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp"
+            android:layout_marginTop="10dp"
+            android:visibility="gone"
+            android:id="@+id/done_rating"
+            android:text="Thank you for sharing!"
+            android:gravity="center"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textColor="@android:color/black"
+            android:background="@android:drawable/editbox_background"
+            android:textSize="14sp"
+            android:layout_marginTop="50dp"
+            android:hint="Review Title"
+            android:id="@+id/review_titleTextView"
+            android:textColorHint="@android:color/darker_gray"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textColor="@android:color/black"
+            android:background="@android:drawable/editbox_background"
+            android:layout_marginTop="10dp"
+            android:textSize="14sp"
+            android:hint="Your Name"
+            android:id="@+id/name_textView"
+            android:textColorHint="@android:color/darker_gray"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textColor="@android:color/black"
+            android:background="@android:drawable/editbox_background"
+            android:textSize="14sp"
+            android:id="@+id/how_improveTextView"
+            android:hint="How can we improve it?"
+            android:layout_marginTop="10dp"
+            android:textColorHint="@android:color/darker_gray"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textColor="@android:color/white"
+            android:background="@color/colorPrimary"
+            android:layout_marginTop="20dp"
+            android:textSize="14sp"
+            android:id="@+id/submit_button"
+            android:text="SUBMIT FEEDBACK"/>
+    </LinearLayout>
+
+</ScrollView>

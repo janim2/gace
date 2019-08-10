@@ -72,7 +72,11 @@ public class MainActivity extends BaseActivity {
         getSupportActionBar().setTitle("NitchApp");
         loading  = (ProgressBar)findViewById(R.id.loading);
 
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        try{
+            firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        }catch (NoSuchMethodError e){
+
+        }
         PostRecyclerView = (RecyclerView) findViewById(R.id.myRecyclerView);
         PostRecyclerView.setHasFixedSize(true);
 
@@ -82,7 +86,6 @@ public class MainActivity extends BaseActivity {
 
         try{
             getPostIds();
-
             mPostAdapter = new PostAdapter(getPosts(), MainActivity.this);
             PostRecyclerView.setAdapter(mPostAdapter);
         }catch (NoClassDefFoundError e){

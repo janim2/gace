@@ -2,17 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gace.app"
     android:targetSandboxVersion="2"
-    android:versionCode="12"
-    android:versionName="12.0" >
+    android:versionCode="25"
+    android:versionName="1.0" >
 
     <uses-sdk
         android:minSdkVersion="21"
         android:targetSdkVersion="28" />
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <uses-feature
         android:glEsVersion="0x00020000"
@@ -38,14 +37,38 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
+        <activity android:name="com.gace.app.ChatGroups" />
+        <activity
+            android:name="com.gace.app.EventReviews"
+            android:parentActivityName="com.gace.app.Eventinfo"
+            android:theme="@style/AppTheme.YesActionBar" />
+        <activity
+            android:name="com.gace.app.AddEventReview"
+            android:parentActivityName="com.gace.app.Eventinfo"
+            android:theme="@style/AppTheme.YesActionBar" />
+        <activity android:name="com.gace.app.AllPostActivity" />
+        <activity
+            android:name="com.gace.app.Report_Activity"
+            android:parentActivityName="com.gace.app.Eventinfo"
+            android:theme="@style/AppTheme.YesActionBar" />
+        <activity
+            android:name="com.gace.app.Contact_Organizer"
+            android:parentActivityName="com.gace.app.Eventinfo"
+            android:theme="@style/AppTheme.YesActionBar" />
+        <activity android:name="com.gace.app.OrderComplete" />
+        <activity
+            android:name="com.gace.app.Continue_Ticketing"
+            android:parentActivityName="com.gace.app.BuyTicket"
+            android:theme="@style/AppTheme.YesActionBar" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
         <activity
             android:name="com.gace.app.BuyTicket"
-            android:theme="@style/AppTheme.YesActionBar" >
-        </activity>
+            android:parentActivityName="com.gace.app.Eventinfo"
+            android:theme="@style/AppTheme.YesActionBar" />
         <activity android:name="com.gace.app.Reset_password" />
         <activity
             android:name="com.gace.app.MyProfile"
@@ -57,7 +80,7 @@
             android:theme="@style/AppTheme.YesActionBar" />
         <activity
             android:name="com.gace.app.EventRegistration"
-            android:parentActivityName="com.gace.app.MainActivity"
+            android:parentActivityName="com.gace.app.Eventinfo"
             android:theme="@style/AppTheme.YesActionBar" />
         <activity
             android:name="com.gace.app.Eventinfo"
@@ -73,7 +96,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.gace.app.RegisterActivity" />
+        <activity
+            android:name="com.gace.app.RegisterActivity"
+            android:parentActivityName="com.gace.app.LoginActivity"
+            android:theme="@style/AppTheme.YesActionBar" />
         <activity
             android:name="com.google.firebase.auth.internal.FederatedSignInActivity"
             android:excludeFromRecents="true"
@@ -102,6 +128,11 @@
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />
+
+        <provider
+            android:name="com.squareup.picasso.PicassoProvider"
+            android:authorities="com.gace.app.com.squareup.picasso"
+            android:exported="false" />
 
         <receiver
             android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
@@ -164,6 +195,11 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        <provider
+            android:name="com.android.tools.ir.server.InstantRunContentProvider"
+            android:authorities="com.gace.app.com.android.tools.ir.server.InstantRunContentProvider"
+            android:multiprocess="true" />
     </application>
 
 </manifest>

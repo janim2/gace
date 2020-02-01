@@ -1,6 +1,7 @@
 package com.gace.app;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,8 +26,21 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.widget.Toast.LENGTH_LONG;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -189,6 +203,7 @@ public class RegisterActivity extends AppCompatActivity {
 //                    finish();
 //                    startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
 //                    sendEmailVerification();
+                    sendRegistrationEmail("register",nameString);
                 }
             }
 
@@ -203,6 +218,79 @@ public class RegisterActivity extends AppCompatActivity {
     public static boolean validEmail(String email){
         String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
         return email.matches(regex);
+    }
+
+    private void sendRegistrationEmail(String status, String name) {
+        new Sending_mail("https://knust-martial-arts.000webhostapp.com/Gace.php"
+                ,status,name).execute();
+    }
+
+    class Sending_mail extends AsyncTask<Void, Void, String> {
+
+        String url_location,status, name;
+
+        public Sending_mail(String url_location,String status, String name) {
+            this.url_location = url_location;
+            this.status = status;
+            this.name = name;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            Thread.currentThread().setPriority(Thread.MAX_PRIORITY);
+            try {
+                URL url = new URL(url_location);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+                httpURLConnection.setConnectTimeout(10000);
+                httpURLConnection.setReadTimeout(10000);
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoOutput(true);
+                httpURLConnection.connect();
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
+
+                String data = URLEncoder.encode("status", "UTF-8") + "=" + URLEncoder.encode(status, "UTF-8") + "&" +
+                        URLEncoder.encode("name", "UTF-8") + "=" + URLEncoder.encode(name, "UTF-8");
+
+                bufferedWriter.write(data);
+                bufferedWriter.flush();
+                bufferedWriter.close();
+                outputStream.close();
+                InputStream inputStream = httpURLConnection.getInputStream();
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+                StringBuffer stringBuffer = new StringBuffer();
+                String fetch;
+                while ((fetch = bufferedReader.readLine()) != null) {
+                    stringBuffer.append(fetch);
+                }
+                String string = stringBuffer.toString();
+                inputStream.close();
+                return string;
+
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
+            return "please check internet connection";
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            if (s.equals("Registration Successful")){
+                Toast.makeText(RegisterActivity.this, s, LENGTH_LONG).show();
+            }
+            Toast.makeText(RegisterActivity.this, s, LENGTH_LONG).show();
+
+        }
+
     }
 
 }

@@ -13,13 +13,16 @@
         android:roundIcon="@mipmap/thelogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EventReviews"
-            android:theme="@style/AppTheme.YesActionBar"
-            android:parentActivityName=".Eventinfo">
-        </activity>
-        <activity android:name=".AddEventReview"
-            android:theme="@style/AppTheme.YesActionBar"
-            android:parentActivityName=".Eventinfo"/>
+        <activity android:name=".Add_Group"></activity>
+        <activity android:name=".ChatGroups" />
+        <activity
+            android:name=".EventReviews"
+            android:parentActivityName=".Eventinfo"
+            android:theme="@style/AppTheme.YesActionBar" />
+        <activity
+            android:name=".AddEventReview"
+            android:parentActivityName=".Eventinfo"
+            android:theme="@style/AppTheme.YesActionBar" />
         <activity android:name=".AllPostActivity" />
         <activity
             android:name=".Report_Activity"

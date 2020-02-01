@@ -104,6 +104,10 @@ public class MainActivity extends BaseActivity {
                 startActivity(new Intent(MainActivity.this,UploadEvent.class));
                 break;
 
+            case R.id.group:
+                startActivity(new Intent(MainActivity.this,ChatGroups.class));
+                break;
+
             case R.id.action_logout:
                 if(isNetworkAvailable()){
                         logout();

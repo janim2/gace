@@ -28,6 +28,11 @@
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/group"
+        android:title="Chat Group"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/action_logout"
         android:icon="@drawable/upload"
         android:title="Logout"

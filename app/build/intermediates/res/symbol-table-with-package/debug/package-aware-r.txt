@@ -1044,6 +1044,7 @@ drawable abc_textfield_search_activated_mtrl_alpha
 drawable abc_textfield_search_default_mtrl_alpha
 drawable abc_textfield_search_material
 drawable abc_vector_test
+drawable attach
 drawable avd_hide_password
 drawable avd_show_password
 drawable black_notifications
@@ -1074,6 +1075,7 @@ drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
 drawable displaystyle
+drawable documents
 drawable done
 drawable done_favourites
 drawable favourites
@@ -1086,10 +1088,12 @@ drawable ic_location_on_black_24dp
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable image
 drawable logobb
 drawable logos
 drawable mtrl_snackbar_background
 drawable mtrl_tabs_default_indicator
+drawable my_message_
 drawable navigation_empty_icon
 drawable newlogo
 drawable notification_action_background
@@ -1109,11 +1113,14 @@ drawable profile
 drawable right
 drawable round_edge
 drawable round_edge_stroke
+drawable their_message_design
 drawable time
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable upload
+drawable videos
 drawable white
+drawable white_add
 id ALT
 id CTRL
 id FUNCTION
@@ -1128,6 +1135,7 @@ id action_bar_root
 id action_bar_spinner
 id action_bar_subtitle
 id action_bar_title
+id action_cdetails
 id action_container
 id action_context_bar
 id action_divider
@@ -1146,6 +1154,7 @@ id action_upload
 id actions
 id activity_chooser_view_content
 id add
+id add_group
 id addevent_button
 id adjust_height
 id adjust_width
@@ -1154,6 +1163,8 @@ id all
 id always
 id area
 id async
+id attach
+id attachment_layout
 id auto
 id barrier
 id beginning
@@ -1170,6 +1181,7 @@ id center
 id center_horizontal
 id center_vertical
 id chains
+id chat_frame
 id checkbox
 id chronometer
 id clip_horizontal
@@ -1185,6 +1197,7 @@ id content
 id contentPanel
 id coordinator
 id country
+id create_group
 id custom
 id customPanel
 id customer_reviewRecycler
@@ -1230,7 +1243,6 @@ id eventtitle
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
-id fab
 id favourites
 id fieldCommentText
 id fieldEmail
@@ -1243,12 +1255,22 @@ id first
 id fixed
 id forever
 id forgot_password
+id g_description
+id g_edit
+id g_image
+id g_name
 id gender
 id ghost_view
 id going
 id gone
 id group
+id group_cardView
+id group_description
 id group_divider
+id group_image
+id group_name
+id group_participants
+id group_recycler
 id groups
 id home
 id homeAsUp
@@ -1260,6 +1282,7 @@ id icon_only
 id ifRoom
 id image
 id image_cardView
+id image_frame
 id imageframe_layout
 id info
 id institution
@@ -1282,7 +1305,12 @@ id map
 id masked
 id media_actions
 id message
+id message_
 id message_input
+id message_text
+id message_time
+id message_user
+id messages_Recyclerview
 id middle
 id mini
 id mobile_input
@@ -1371,6 +1399,7 @@ id see_all
 id see_all_posts
 id select_dialog_listview
 id selected
+id send_message
 id share
 id shortcut
 id showCustom
@@ -1488,10 +1517,13 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_add__group
 layout activity_add_event_review
 layout activity_all_post
 layout activity_buy_ticket
+layout activity_chat_details
 layout activity_chat_groups
+layout activity_chat_information
 layout activity_contact__organizer
 layout activity_continue__ticketing
 layout activity_event_registration
@@ -1507,6 +1539,7 @@ layout activity_report
 layout activity_reset_password
 layout activity_search
 layout activity_upload_event
+layout chats_attachment
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
 layout design_layout_snackbar
@@ -1526,6 +1559,7 @@ layout item_event
 layout list_row
 layout mtrl_layout_snackbar
 layout mtrl_layout_snackbar_include
+layout my_chat_message
 layout notification_action
 layout notification_action_tombstone
 layout notification_media_action
@@ -1547,6 +1581,8 @@ layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
+layout their_chat_message
+menu chat_details_menu
 menu event_info_menu
 menu main
 mipmap ic_launcher

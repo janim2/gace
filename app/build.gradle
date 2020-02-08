@@ -5,7 +5,8 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.gace.app"
-        minSdkVersion 21
+        minSdkVersion 16
+//        minSdkVersion 21
         targetSdkVersion 28
         versionCode 25
         versionName "1.0"

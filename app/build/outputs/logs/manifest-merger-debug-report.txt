@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:2:1-81:12
-INJECTED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:2:1-81:12
-INJECTED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:2:1-81:12
-INJECTED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:2:1-81:12
+ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:2:1-97:12
+INJECTED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:2:1-97:12
+INJECTED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:2:1-97:12
+INJECTED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:2:1-97:12
 MERGED from [com.android.support:design:28.0.0] /home/jesse/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/082c290e6e69d2022f7baadae15fe33f/AndroidManifest.xml:17:1-24:12
 MERGED from [com.android.support:appcompat-v7:28.0.0] /home/jesse/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/29dce0c2b4ddbd05d0d59da52745b0df/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /home/jesse/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/a5a1026335493e136f233eec19d86303/AndroidManifest.xml:2:1-11:12
@@ -67,20 +67,20 @@ MERGED from [com.crashlytics.sdk.android:answers:1.4.5] /home/jesse/.gradle/cach
 MERGED from [io.fabric.sdk.android:fabric:1.4.6] /home/jesse/.gradle/caches/transforms-1/files-1.1/fabric-1.4.6.aar/a7d7de72fd24f2692291c419f754607c/AndroidManifest.xml:22:1-33:12
 MERGED from [com.google.firebase:firebase-database-collection:16.0.1] /home/jesse/.gradle/caches/transforms-1/files-1.1/firebase-database-collection-16.0.1.aar/b1afcdae032b7ff13635f3665a46e02d/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.gms:play-services-measurement-base:16.0.0] /home/jesse/.gradle/caches/transforms-1/files-1.1/play-services-measurement-base-16.0.0.aar/26f6319a9c654b9650a863a7bf1c33b7/AndroidManifest.xml:17:1-24:12
-INJECTED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:2:1-81:12
-INJECTED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:2:1-81:12
-INJECTED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:2:1-81:12
+INJECTED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:2:1-97:12
+INJECTED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:2:1-97:12
+INJECTED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:2:1-97:12
 	package
 		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:3:5-27
 		INJECTED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml
 		INJECTED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:2:1-81:12
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:2:1-97:12
 		INJECTED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:2:1-81:12
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:2:1-97:12
 		INJECTED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:2:11-69
@@ -136,8 +136,16 @@ uses-permission#android.permission.ACCESS_FINE_LOCATION
 ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:7:5-79
 	android:name
 		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:7:22-76
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:8:5-81
+	android:name
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:8:22-78
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:9:5-80
+	android:name
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:9:22-77
 application
-ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:9:5-79:19
+ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:12:5-95:19
 MERGED from [com.android.support:design:28.0.0] /home/jesse/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/082c290e6e69d2022f7baadae15fe33f/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:design:28.0.0] /home/jesse/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/082c290e6e69d2022f7baadae15fe33f/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /home/jesse/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.1.3.aar/a5a1026335493e136f233eec19d86303/AndroidManifest.xml:9:5-20
@@ -195,147 +203,173 @@ MERGED from [com.google.android.gms:play-services-measurement-base:16.0.0] /home
 	android:appComponentFactory
 		ADDED from [com.android.support:support-compat:28.0.0] /home/jesse/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0.aar/92b5348f48699916a88ebdb1fc9b5da4/AndroidManifest.xml:22:18-91
 	android:supportsRtl
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:14:9-35
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:17:9-35
 	android:label
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:12:9-41
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:15:9-41
 	android:roundIcon
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:13:9-44
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:16:9-44
 	android:icon
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:11:9-39
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:14:9-39
 	android:allowBackup
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:10:9-35
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:13:9-35
 	android:theme
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:15:9-40
-activity#com.gace.app.ChatGroups
-ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:16:9-57
-	android:name
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:16:19-45
-activity#com.gace.app.EventReviews
-ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:17:9-20:69
-	android:parentActivityName
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:19:13-52
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:18:9-40
+activity#com.gace.app.Chat_information
+ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:19:9-20:69
 	android:theme
 		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:20:13-57
 	android:name
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:18:13-41
-activity#com.gace.app.AddEventReview
-ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:21:9-24:60
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:19:19-51
+activity#com.gace.app.Chat_details
+ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:21:9-24:59
 	android:parentActivityName
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:23:13-52
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:23:13-53
 	android:theme
 		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:24:13-57
 	android:name
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:22:13-43
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:22:13-41
+activity#com.gace.app.Add_Group
+ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:25:9-28:59
+	android:parentActivityName
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:27:13-53
+	android:theme
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:28:13-57
+	android:name
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:26:13-38
+activity#com.gace.app.ChatGroups
+ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:29:9-32:59
+	android:parentActivityName
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:31:13-55
+	android:theme
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:32:13-57
+	android:name
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:30:13-39
+activity#com.gace.app.EventReviews
+ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:33:9-36:60
+	android:parentActivityName
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:35:13-52
+	android:theme
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:36:13-57
+	android:name
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:34:13-41
+activity#com.gace.app.AddEventReview
+ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:37:9-40:60
+	android:parentActivityName
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:39:13-52
+	android:theme
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:40:13-57
+	android:name
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:38:13-43
 activity#com.gace.app.AllPostActivity
-ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:25:9-53
+ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:41:9-53
 	android:name
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:25:19-50
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:41:19-50
 activity#com.gace.app.Report_Activity
-ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:26:9-29:60
+ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:42:9-45:60
 	android:parentActivityName
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:28:13-52
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:44:13-52
 	android:theme
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:29:13-57
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:45:13-57
 	android:name
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:27:13-44
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:43:13-44
 activity#com.gace.app.Contact_Organizer
-ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:30:9-33:60
+ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:46:9-49:60
 	android:parentActivityName
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:32:13-52
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:48:13-52
 	android:theme
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:33:13-57
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:49:13-57
 	android:name
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:31:13-46
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:47:13-46
 activity#com.gace.app.OrderComplete
-ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:34:9-51
+ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:50:9-51
 	android:name
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:34:19-48
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:50:19-48
 activity#com.gace.app.Continue_Ticketing
-ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:35:9-38:60
+ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:51:9-54:60
 	android:parentActivityName
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:37:13-52
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:53:13-52
 	android:theme
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:38:13-57
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:54:13-57
 	android:name
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:36:13-47
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:52:13-47
 meta-data#com.google.android.geo.API_KEY
-ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:40:9-42:55
+ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:56:9-58:55
 	android:value
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:42:13-52
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:58:13-52
 	android:name
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:41:13-58
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:57:13-58
 activity#com.gace.app.BuyTicket
-ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:44:9-47:60
+ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:60:9-63:60
 	android:parentActivityName
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:46:13-52
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:62:13-52
 	android:theme
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:47:13-57
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:63:13-57
 	android:name
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:45:13-38
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:61:13-38
 activity#com.gace.app.Reset_password
-ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:48:9-52
+ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:64:9-52
 	android:name
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:48:19-49
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:64:19-49
 activity#com.gace.app.MyProfile
-ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:49:9-52:60
+ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:65:9-68:60
 	android:parentActivityName
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:51:13-55
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:67:13-55
 	android:theme
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:52:13-57
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:68:13-57
 	android:name
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:50:13-38
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:66:13-38
 activity#com.gace.app.UploadEvent
-ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:53:9-56:60
+ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:69:9-72:60
 	android:parentActivityName
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:55:13-55
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:71:13-55
 	android:theme
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:56:13-57
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:72:13-57
 	android:name
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:54:13-40
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:70:13-40
 activity#com.gace.app.EventRegistration
-ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:57:9-60:60
+ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:73:9-76:60
 	android:parentActivityName
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:59:13-52
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:75:13-52
 	android:theme
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:60:13-57
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:76:13-57
 	android:name
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:58:13-46
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:74:13-46
 activity#com.gace.app.Eventinfo
-ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:61:9-64:60
+ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:77:9-80:60
 	android:parentActivityName
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:63:13-55
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:79:13-55
 	android:theme
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:64:13-57
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:80:13-57
 	android:name
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:62:13-38
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:78:13-38
 activity#com.gace.app.MainActivity
-ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:65:9-67:60
+ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:81:9-83:60
 	android:theme
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:67:13-57
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:83:13-57
 	android:name
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:66:13-41
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:82:13-41
 activity#com.gace.app.LoginActivity
-ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:68:9-74:20
+ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:84:9-90:20
 	android:name
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:68:19-48
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:84:19-48
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:69:13-73:29
+ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:85:13-89:29
 action#android.intent.action.MAIN
-ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:70:17-69
+ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:86:17-69
 	android:name
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:70:25-66
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:86:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:72:17-77
+ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:88:17-77
 	android:name
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:72:27-74
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:88:27-74
 activity#com.gace.app.RegisterActivity
-ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:75:9-78:60
+ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:91:9-94:60
 	android:parentActivityName
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:77:13-56
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:93:13-56
 	android:theme
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:78:13-57
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:94:13-57
 	android:name
-		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:76:13-45
+		ADDED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml:92:13-45
 uses-sdk
 INJECTED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/jesse/AndroidStudioProjects/gace/app/src/main/AndroidManifest.xml

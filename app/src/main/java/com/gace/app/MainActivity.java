@@ -53,17 +53,17 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if(firebaseUser!=null){
-            if(firebaseUser.isEmailVerified()){
+        if(firebaseUser!=null) {
+//            if(firebaseUser.isEmailVerified()){
 
-            }else{
-                FirebaseAuth.getInstance().signOut();
-                Toast.makeText(MainActivity.this,"Verify Email",Toast.LENGTH_LONG).show();
-                startActivity(new Intent(MainActivity.this,LoginActivity.class));
+//            }else{
+//                FirebaseAuth.getInstance().signOut();
+//                Toast.makeText(MainActivity.this,"Verify Email",Toast.LENGTH_LONG).show();
+        }else{
+            startActivity(new Intent(MainActivity.this,LoginActivity.class));
 
             }
         }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

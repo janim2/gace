@@ -6,12 +6,14 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="21"
+        android:minSdkVersion="16"
         android:targetSdkVersion="28" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <uses-feature
         android:glEsVersion="0x00020000"
@@ -37,7 +39,21 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.gace.app.ChatGroups" />
+        <activity
+            android:name="com.gace.app.Chat_information"
+            android:theme="@style/AppTheme.YesActionBar" />
+        <activity
+            android:name="com.gace.app.Chat_details"
+            android:parentActivityName="com.gace.app.ChatGroups"
+            android:theme="@style/AppTheme.YesActionBar" />
+        <activity
+            android:name="com.gace.app.Add_Group"
+            android:parentActivityName="com.gace.app.ChatGroups"
+            android:theme="@style/AppTheme.YesActionBar" />
+        <activity
+            android:name="com.gace.app.ChatGroups"
+            android:parentActivityName="com.gace.app.MainActivity"
+            android:theme="@style/AppTheme.YesActionBar" />
         <activity
             android:name="com.gace.app.EventReviews"
             android:parentActivityName="com.gace.app.Eventinfo"
@@ -195,11 +211,6 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
-        <provider
-            android:name="com.android.tools.ir.server.InstantRunContentProvider"
-            android:authorities="com.gace.app.com.android.tools.ir.server.InstantRunContentProvider"
-            android:multiprocess="true" />
     </application>
 
 </manifest>

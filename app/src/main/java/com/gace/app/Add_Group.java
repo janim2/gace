@@ -46,18 +46,23 @@ public class Add_Group extends AppCompatActivity {
     private ImageView group_image;
     private EditText group_name, group_description;
     private Button create_group;
-    private String g_name, g_description;
+    private String g_name, g_description, user_phonenumber;
 
     private final int PICK_IMAGE_ONE_REQUEST = 71;
     private Uri filePath_one;
     private DatabaseReference storage_reference;
     private ProgressDialog progressDialog;
+    private Accessories addgroupaccessor;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add__group);
+
+        addgroupaccessor = new Accessories(Add_Group.this);
+
+        user_phonenumber = addgroupaccessor.getString("saved_phone");
 
         getSupportActionBar().setTitle("Create Group");
         image_frame = findViewById(R.id.image_frame);
@@ -148,7 +153,7 @@ public class Add_Group extends AppCompatActivity {
 
 
                                             DatabaseReference add_participant = FirebaseDatabase.getInstance().getReference("group_participants")
-                                                    .child(group_key).child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                                    .child(group_key).child(user_phonenumber);
                                             add_participant.child("participant").setValue("Yes");
                                         }
                                     });
@@ -215,7 +220,7 @@ public class Add_Group extends AppCompatActivity {
 
 
             DatabaseReference add_participant = FirebaseDatabase.getInstance().getReference("group_participants")
-                    .child(group_key).child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                    .child(group_key).child(user_phonenumber);
             add_participant.child("participant").setValue("Yes")
 
             .addOnCompleteListener(new OnCompleteListener<Void>() {

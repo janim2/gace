@@ -1154,7 +1154,11 @@ id action_upload
 id actions
 id activity_chooser_view_content
 id add
+id add_documents
 id add_group
+id add_participant_card
+id add_pictures
+id add_videos
 id addevent_button
 id adjust_height
 id adjust_width
@@ -1281,6 +1285,7 @@ id icon_group
 id icon_only
 id ifRoom
 id image
+id image_card
 id image_cardView
 id image_frame
 id imageframe_layout
@@ -1306,10 +1311,12 @@ id masked
 id media_actions
 id message
 id message_
+id message_image
 id message_input
 id message_text
 id message_time
 id message_user
+id message_video
 id messages_Recyclerview
 id middle
 id mini
@@ -1328,6 +1335,7 @@ id navigation_header_container
 id never
 id new_password_e_text
 id no_reviews
+id nogroups
 id none
 id normal
 id notification_background
@@ -1463,6 +1471,7 @@ id unlabeled
 id up
 id useLogo
 id username
+id video_card
 id view_offset_helper
 id visible
 id wide

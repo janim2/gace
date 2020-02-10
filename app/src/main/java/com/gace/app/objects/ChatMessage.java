@@ -4,11 +4,13 @@ public class ChatMessage {
 
     private String messageText;
     private String messageUser;
+    private String documentName;
     private long messageTime;
 
-    public ChatMessage(String messageText, long messageTime, String messageUser) {
+    public ChatMessage(String messageText, long messageTime, String documentName, String messageUser) {
         this.messageText = messageText;
         this.messageTime = messageTime;
+        this.documentName = documentName;
         this.messageUser = messageUser;
     }
 
@@ -30,6 +32,10 @@ public class ChatMessage {
 
     public void setMessageUser(String messageUser) {
         this.messageUser = messageUser;
+    }
+
+    public String getDocumentName() {
+        return documentName;
     }
 
     public long getMessageTime() {

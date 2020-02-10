@@ -12,6 +12,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gace.app.objects.ChatGroupAdapter;
@@ -36,7 +37,9 @@ public class ChatGroups extends AppCompatActivity {
     private RecyclerView groups_RecyclerView;
     RecyclerView.LayoutManager mPostLayoutManager;
     private RecyclerView.Adapter groupsAdapter;
-    private String g_image, g_name, g_description;
+    private String g_image, g_name, g_description, user_phone_number;
+    private Accessories chatgroupaccessor;
+    private TextView nogroups;
 
 
     @Override
@@ -44,10 +47,13 @@ public class ChatGroups extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_groups);
 
+        chatgroupaccessor = new Accessories(ChatGroups.this);
+        user_phone_number = chatgroupaccessor.getString("saved_phone");
         getSupportActionBar().setTitle("Groups");
 
         add_group = findViewById(R.id.add_group);
         groups_RecyclerView = findViewById(R.id.group_recycler);
+        nogroups = findViewById(R.id.nogroups);
 
         add_group.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +80,7 @@ public class ChatGroups extends AppCompatActivity {
 
     private void Fetch_Groups_IDs() {
         try{
+            nogroups.setVisibility(View.GONE);
             DatabaseReference fetch_groups_ID = FirebaseDatabase.getInstance().getReference("groups");//.child(FirebaseAuth.getInstance().getCurrentUser().getUid());
             fetch_groups_ID.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -110,6 +117,7 @@ public class ChatGroups extends AppCompatActivity {
                         Check_if_a_group_member(key,child.getKey());
                     }
                 }else{
+                    nogroups.setVisibility(View.VISIBLE);
                     Toast.makeText(ChatGroups.this, "No groups", Toast.LENGTH_LONG).show();
                 }
 
@@ -126,7 +134,7 @@ public class ChatGroups extends AppCompatActivity {
     private void Check_if_a_group_member(final String key, final String group_key) {
         try{
             DatabaseReference verify_ID = FirebaseDatabase.getInstance().getReference("group_participants")
-            .child(group_key).child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+            .child(group_key).child(user_phone_number);
             verify_ID.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -134,6 +142,7 @@ public class ChatGroups extends AppCompatActivity {
                     Fetch_Groups(key,group_key);
                 }else{
                     Toast.makeText(ChatGroups.this, "No groups", Toast.LENGTH_LONG).show();
+                    nogroups.setVisibility(View.VISIBLE);
                 }
 
             }

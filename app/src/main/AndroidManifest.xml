@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
 
     <application
@@ -17,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Chat_information"
-            android:theme="@style/AppTheme.YesActionBar"></activity>
+            android:theme="@style/AppTheme.YesActionBar"
+            android:parentActivityName=".Chat_details"></activity>
         <activity
             android:name=".Chat_details"
             android:parentActivityName=".ChatGroups"

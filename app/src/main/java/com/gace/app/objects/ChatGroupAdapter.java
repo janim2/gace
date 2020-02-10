@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.gace.app.Accessories;
 import com.gace.app.Chat_details;
 import com.gace.app.R;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -52,6 +53,7 @@ public class ChatGroupAdapter extends RecyclerView.Adapter<ChatGroupAdapter.View
         final CardView group_cardView = holder.view.findViewById(R.id.group_cardView);
         final ImageView group_image = holder.view.findViewById(R.id.group_image);
         final TextView group_name = holder.view.findViewById(R.id.group_name);
+        final Accessories adapter_ = new Accessories(context);
 
         DisplayImageOptions theImageOptions = new DisplayImageOptions.Builder().cacheInMemory(true).
                 cacheOnDisk(true).build();
@@ -66,8 +68,8 @@ public class ChatGroupAdapter extends RecyclerView.Adapter<ChatGroupAdapter.View
             @Override
             public void onClick(View v) {
                 Intent group_intent = new Intent(v.getContext(), Chat_details.class);
-                group_intent.putExtra("group_id", itemList.get(position).getKey());
-                group_intent.putExtra("group_name", itemList.get(position).getGroup_name());
+                adapter_.put("group_id", itemList.get(position).getKey());
+                adapter_.put("group_name", itemList.get(position).getGroup_name());
                 v.getContext().startActivity(group_intent);
             }
         });

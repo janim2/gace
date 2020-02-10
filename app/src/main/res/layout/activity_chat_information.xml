@@ -54,6 +54,25 @@
             android:textSize="12sp"
             android:layout_marginTop="20dp"
             android:textColor="@android:color/black"/>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="10dp"
+            android:elevation="10dp"
+            android:id="@+id/add_participant_card"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Add Participant"
+                android:gravity="center_vertical"
+                android:textSize="15sp"
+                android:padding="10dp"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"/>
+        </android.support.v7.widget.CardView>
     </LinearLayout>
 
 </ScrollView>

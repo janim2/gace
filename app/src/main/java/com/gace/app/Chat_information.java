@@ -2,16 +2,24 @@ package com.gace.app;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gace.app.objects.ChatMessage;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,6 +40,7 @@ public class Chat_information extends AppCompatActivity {
     private ImageView group_image;
 
     private ImageLoader imageLoader = ImageLoader.getInstance();
+    private CardView addParticipantCard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +56,7 @@ public class Chat_information extends AppCompatActivity {
         group_image = findViewById(R.id.group_image);
         group_name = findViewById(R.id.group_name);
         group_description = findViewById(R.id.group_description);
+        addParticipantCard = findViewById(R.id.add_participant_card);
 
         group_name.setText(chat_name);
 
@@ -55,6 +65,17 @@ public class Chat_information extends AppCompatActivity {
         }else{
             Toast.makeText(Chat_information.this, "No internet connection", Toast.LENGTH_LONG).show();
         }
+
+
+        addParticipantCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("content://contacts");
+                Intent intent = new Intent(Intent.ACTION_PICK, uri);
+                intent.setType(ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE);
+                startActivityForResult(intent, 1);
+            }
+        });
 
     }
 
@@ -130,6 +151,47 @@ public class Chat_information extends AppCompatActivity {
             });
         }catch (NullPointerException e){
          e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+                Uri uri = data.getData();
+                String[] projection = { ContactsContract.CommonDataKinds.Phone.NUMBER, ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME };
+
+                Cursor cursor = getContentResolver().query(uri, projection,
+                        null, null, null);
+                cursor.moveToFirst();
+
+                int numberColumnIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER);
+                String number = cursor.getString(numberColumnIndex);
+
+                int nameColumnIndex = cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME);
+                String name = cursor.getString(nameColumnIndex);
+//                Toast.makeText(Chat_information.this, name + " : " + number, Toast.LENGTH_LONG).show();
+                Addparticipant(number.replace("+233","0"));
+        }
+    }
+
+    private void Addparticipant(String number) {
+        try {
+            if(isNetworkAvailable()){
+                DatabaseReference addparticipant = FirebaseDatabase.getInstance()
+                        .getReference("group_participants").child(group_id)
+                        .child(number);
+                addparticipant.child("participant").setValue("Yes")
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Toast.makeText(Chat_information.this, "Participant added", Toast.LENGTH_LONG).show();
+                                finish();
+                            }
+                        });
+            }
+        }catch (NullPointerException e){
+
         }
     }
 

@@ -18,8 +18,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener{
 
@@ -33,14 +36,16 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     private Button mSignInButton;
     private Button mSignUpButton, loginface, logingmail;
     public  Button resend_verfication;
-    TextView open_register,forgot_password;
+    private TextView open_register,forgot_password;
+    private String semail, sgender, slocation, getSgender, sphone, susername;
+    private Accessories loginaccessor;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        loginaccessor = new Accessories(LoginActivity.this);
         mAuth = FirebaseAuth.getInstance();
 
 //        app was crushing here in the login because this database reference wasnt found
@@ -188,11 +193,55 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         String username = usernameFromEmail(user.getEmail());
 
         // Write new user
-        writeNewUser(user.getUid(), username, user.getEmail());
+//        writeNewUser(user.getUid(), username, user.getEmail());
 
         // Go to MainActivity
         startActivity(new Intent(LoginActivity.this, MainActivity.class));
         finish();
+
+        FetchUserDetails();
+    }
+
+    private void FetchUserDetails() {
+        try {
+            FirebaseAuth user = FirebaseAuth.getInstance();
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("users").child(user.getCurrentUser().getUid());
+            reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for(DataSnapshot child : dataSnapshot.getChildren()){
+                        if(child.getKey().equals("email")){
+                            semail = child.getValue().toString();
+                        }
+                        if(child.getKey().equals("gender")){
+                            sgender = child.getValue().toString();
+                        }
+                        if(child.getKey().equals("location")){
+                            slocation = child.getValue().toString();
+                        }
+                        if(child.getKey().equals("phone")){
+                            sphone = child.getValue().toString();
+                        }
+                        if(child.getKey().equals("username")){
+                            susername = child.getValue().toString();
+                        }
+                    }
+                    loginaccessor.put("saved_email",semail);
+                    loginaccessor.put("saved_gender",sgender);
+                    loginaccessor.put("saved_location",slocation);
+                    loginaccessor.put("saved_phone",sphone);
+                    loginaccessor.put("saved_username",susername);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+
+            });
+        }catch (NullPointerException e){
+
+        }
     }
 
     private String usernameFromEmail(String email) {

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -68,6 +70,23 @@ public class ChatGroups extends AppCompatActivity {
         }else{
 
         }
+
+        final Handler thehandler;
+
+        thehandler = new Handler(Looper.getMainLooper());
+        final int delay = 10000; //checking for a message every 10 seconds
+
+        thehandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if(isNetworkAvailable()){
+                    Fetch_Groups_IDs();
+                }else{
+//                        Toast.makeText(Admin_MainActivity.this,"checking", Toast.LENGTH_LONG).show();
+                }
+                thehandler.postDelayed(this,delay);
+            }
+        },delay);
 
         groups_RecyclerView.setHasFixedSize(true);
 

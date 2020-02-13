@@ -122,6 +122,12 @@ public class Chat_details extends AppCompatActivity {
         add_videos = findViewById(R.id.add_videos);
         loading = findViewById(R.id.loading);
 
+        if(isNetworkAvailable()){
+            getTheMessagesKeys();
+        }else{
+            Toast.makeText(Chat_details.this,"No internet connection", Toast.LENGTH_LONG).show();
+        }
+
         //getiing the messages variable initialization starts here
         final Handler thehandler;
 

@@ -5,10 +5,10 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.gace.app"
-        minSdkVersion 16
-//        minSdkVersion 21
+//        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 28
-        versionCode 25
+        versionCode 27
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -40,6 +40,8 @@ dependencies {
     implementation files('libs/universal-image-loader-1.9.5.jar')
     implementation 'com.google.android.gms:play-services-maps:16.1.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.github.Flutterwave:rave-android:1.0.48'
+
 
 }
 apply plugin: 'com.google.gms.google-services'

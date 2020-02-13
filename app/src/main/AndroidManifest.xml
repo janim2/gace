@@ -49,7 +49,8 @@
             android:name=".Contact_Organizer"
             android:parentActivityName=".Eventinfo"
             android:theme="@style/AppTheme.YesActionBar" />
-        <activity android:name=".OrderComplete" />
+        <activity android:name=".OrderComplete"
+            android:theme="@style/AppTheme.YesActionBar"/>
         <activity
             android:name=".Continue_Ticketing"
             android:parentActivityName=".BuyTicket"

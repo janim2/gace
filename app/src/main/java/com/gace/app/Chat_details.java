@@ -68,7 +68,7 @@ public class Chat_details extends AppCompatActivity {
     private RecyclerView messages_RecyclerView;
     private RecyclerView.Adapter messages_mAdapter;
 
-    private String messagess, message_text, message_time, document_name, message_user;
+    private String isagroup, messagess, message_text, message_time, document_name, message_user;
     private EditText message_;
     private ImageView attach,send_message;
     private CardView attachment_cardView;
@@ -91,6 +91,7 @@ public class Chat_details extends AppCompatActivity {
                 Intent chat_details = new Intent(Chat_details.this, Chat_information.class);
                 chat_details.putExtra("group_id",group_id);
                 chat_details.putExtra("group_name",group_name);
+                chat_details.putExtra("isgroup",isagroup);
                 startActivity(chat_details);
                 break;
         }
@@ -108,6 +109,7 @@ public class Chat_details extends AppCompatActivity {
 
         group_id = chat_details_accessor.getString("group_id");
         group_name = chat_details_accessor.getString("group_name");
+        isagroup = chat_details_accessor.getString("isagroup");
 
         getSupportActionBar().setTitle(group_name);
 

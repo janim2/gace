@@ -150,7 +150,7 @@ public class Add_Group extends AppCompatActivity {
                                             addImages_one.child("image").setValue(imageUrl);
                                             addImages_one.child("name").setValue(g_name);
                                             addImages_one.child("description").setValue(g_description);
-
+                                            addImages_one.child("isagroup").setValue("Yes");
 
                                             DatabaseReference add_participant = FirebaseDatabase.getInstance().getReference("group_participants")
                                                     .child(group_key).child(user_phonenumber);
@@ -217,6 +217,7 @@ public class Add_Group extends AppCompatActivity {
             addImages_one.child("image").setValue("");
             addImages_one.child("name").setValue(g_name);
             addImages_one.child("description").setValue(g_description);
+            addImages_one.child("isagroup").setValue("Yes");
 
 
             DatabaseReference add_participant = FirebaseDatabase.getInstance().getReference("group_participants")

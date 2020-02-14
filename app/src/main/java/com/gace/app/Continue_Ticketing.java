@@ -195,6 +195,7 @@ public class Continue_Ticketing extends BaseActivity {
 //
 //                .setPublicKey(emma_PUBLIC_KEY)
 //                .setEncryptionKey(emma_ENCRYPTION_KEY)
+//                    .isPreAuth(true)
                     .setfName(firstname_string)
                     .setlName(lastname_string)
                     .setEmail(FirebaseAuth.getInstance().getCurrentUser().getEmail())

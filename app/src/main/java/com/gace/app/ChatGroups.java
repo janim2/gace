@@ -39,7 +39,7 @@ public class ChatGroups extends AppCompatActivity {
     private RecyclerView groups_RecyclerView;
     RecyclerView.LayoutManager mPostLayoutManager;
     private RecyclerView.Adapter groupsAdapter;
-    private String g_image, g_name, g_description, user_phone_number;
+    private String g_image, g_name, g_description, user_phone_number, isagroup;
     private Accessories chatgroupaccessor;
     private TextView nogroups;
 
@@ -80,6 +80,7 @@ public class ChatGroups extends AppCompatActivity {
             @Override
             public void run() {
                 if(isNetworkAvailable()){
+                    groups_arraylist.clear();
                     Fetch_Groups_IDs();
                 }else{
 //                        Toast.makeText(Admin_MainActivity.this,"checking", Toast.LENGTH_LONG).show();
@@ -201,12 +202,16 @@ public class ChatGroups extends AppCompatActivity {
                                 g_description = child.getValue().toString();
                             }
 
+                            if(child.getKey().equals("isagroup")){
+                                isagroup = child.getValue().toString();
+                            }
+
                             else{
 //                            Toast.makeText(MainActivity.this,"Couldn't fetch posts",Toast.LENGTH_LONG).show();
                             }
                         }
 
-                            Chat_group obj = new Chat_group(group_key,g_image,g_name,g_description);
+                            Chat_group obj = new Chat_group(group_key,isagroup,g_image,g_name,g_description);
                             groups_arraylist.add(obj);
                             groups_RecyclerView.setAdapter(groupsAdapter);
                             groupsAdapter.notifyDataSetChanged();

@@ -53,7 +53,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        if(firebaseUser!=null) {
+        if(FirebaseAuth.getInstance().getCurrentUser() != null) {
 //            if(firebaseUser.isEmailVerified()){
 
 //            }else{
@@ -72,11 +72,6 @@ public class MainActivity extends BaseActivity {
         getSupportActionBar().setTitle("NitchApp");
         loading  = (ProgressBar)findViewById(R.id.loading);
 
-        try{
-            firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        }catch (NoSuchMethodError e){
-
-        }
         PostRecyclerView = (RecyclerView) findViewById(R.id.myRecyclerView);
         PostRecyclerView.setHasFixedSize(true);
 
@@ -85,9 +80,12 @@ public class MainActivity extends BaseActivity {
 
 
         try{
-            getPostIds();
-            mPostAdapter = new PostAdapter(getPosts(), MainActivity.this);
-            PostRecyclerView.setAdapter(mPostAdapter);
+            if(isNetworkAvailable()){
+                getPostIds();
+                mPostAdapter = new PostAdapter(getPosts(), MainActivity.this);
+                PostRecyclerView.setAdapter(mPostAdapter);
+            }
+
         }catch (NoClassDefFoundError e){
 
         }

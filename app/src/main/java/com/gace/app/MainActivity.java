@@ -40,7 +40,7 @@ public class MainActivity extends BaseActivity {
     RecyclerView.Adapter mPostAdapter;
     RecyclerView.LayoutManager mPostLayoutManager;
     ArrayList resultPost = new ArrayList<Post>();
-    String title,description,user,location,likes,imageurl,rate,prize,the_date,the_time;
+    String title,description,user,location,likes,imageurl,rate,prize,the_date,the_time,is_item_approved;
     ProgressBar loading;
     FirebaseUser firebaseUser;
 
@@ -229,18 +229,29 @@ public class MainActivity extends BaseActivity {
                             if(child.getKey().equals("time")){
                                 the_time = child.getValue().toString();
                             }
+
+                            if(child.getKey().equals("isapproved")){
+                                is_item_approved = child.getValue().toString();
+                            }
                             else{
 //                            Toast.makeText(MainActivity.this,"Couldn't fetch posts",Toast.LENGTH_LONG).show();
                             }
                         }
 
-                        String eventid = key;
+                        if(is_item_approved.equals("Yes")){
+                            String eventid = key;
 
-                        Post obj = new Post(eventid,imageurl,description,location,likes,title,user,rate,prize,the_date,the_time);
-                        resultPost.add(obj);
-                        PostRecyclerView.setAdapter(mPostAdapter);
-                        mPostAdapter.notifyDataSetChanged();
-                        loading.setVisibility(GONE);
+                            Post obj = new Post(eventid,imageurl,description,location,likes,title,user,
+                                    rate,prize,the_date,the_time,is_item_approved);
+                            resultPost.add(obj);
+                            PostRecyclerView.setAdapter(mPostAdapter);
+                            mPostAdapter.notifyDataSetChanged();
+                            loading.setVisibility(GONE);
+                        }else{
+                            loading.setVisibility(GONE);
+                            Toast.makeText(MainActivity.this, "No new posts", Toast.LENGTH_LONG).show();
+                        }
+
                     }
                 }
 

@@ -138,7 +138,7 @@ public class ChatGroups extends AppCompatActivity {
                     }
                 }else{
                     nogroups.setVisibility(View.VISIBLE);
-                    Toast.makeText(ChatGroups.this, "No groups", Toast.LENGTH_LONG).show();
+//                    Toast.makeText(ChatGroups.this, "No groups", Toast.LENGTH_LONG).show();
                 }
 
             }
@@ -161,7 +161,7 @@ public class ChatGroups extends AppCompatActivity {
                 if(dataSnapshot.exists()){
                     Fetch_Groups(key,group_key);
                 }else{
-                    Toast.makeText(ChatGroups.this, "No groups", Toast.LENGTH_LONG).show();
+//                    Toast.makeText(ChatGroups.this, "No groups", Toast.LENGTH_LONG).show();
                     nogroups.setVisibility(View.VISIBLE);
                 }
 

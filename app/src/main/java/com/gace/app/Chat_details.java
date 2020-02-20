@@ -32,6 +32,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
 
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.gace.app.objects.ChatMessage;
@@ -74,9 +75,10 @@ public class Chat_details extends AppCompatActivity {
     private CardView attachment_cardView;
     private int show_attach = 0;
     private FrameLayout chats_framelayout;
-    private TextView add_images, add_documents, add_videos;
+    private TextView add_images, add_documents, add_videos,group_name_text;
     private ProgressBar loading;
     private Accessories chat_details_accessor;
+    private Toolbar actiontoolbar;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -103,6 +105,19 @@ public class Chat_details extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_details);
 
+        setSupportActionBar((Toolbar) findViewById(R.id.toolbar));
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        group_name_text = findViewById(R.id.groupname);
+
+        group_name_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Chat_details.this, Chat_information.class));
+            }
+        });
+
         chat_details_accessor = new Accessories(Chat_details.this);
 
         details_intent = getIntent();
@@ -111,7 +126,7 @@ public class Chat_details extends AppCompatActivity {
         group_name = chat_details_accessor.getString("group_name");
         isagroup = chat_details_accessor.getString("isagroup");
 
-        getSupportActionBar().setTitle(group_name);
+        group_name_text.setText(group_name);
 
         messages_RecyclerView = findViewById(R.id.messages_Recyclerview);
         message_ = findViewById(R.id.message_);

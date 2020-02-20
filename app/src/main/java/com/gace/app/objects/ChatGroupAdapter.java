@@ -68,10 +68,15 @@ public class ChatGroupAdapter extends RecyclerView.Adapter<ChatGroupAdapter.View
             @Override
             public void onClick(View v) {
                 Intent group_intent = new Intent(v.getContext(), Chat_details.class);
-                adapter_.put("group_id", itemList.get(position).getKey());
-                adapter_.put("group_name", itemList.get(position).getGroup_name());
-                adapter_.put("isagroup", itemList.get(position).getIsagroup());
-                v.getContext().startActivity(group_intent);
+                try {
+                    adapter_.put("group_id", itemList.get(position).getKey());
+                    adapter_.put("group_name", itemList.get(position).getGroup_name());
+                    adapter_.put("isagroup", itemList.get(position).getIsagroup());
+                    v.getContext().startActivity(group_intent);
+                }catch (IndexOutOfBoundsException w){
+
+                }
+
             }
         });
     }

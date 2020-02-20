@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.gace.app.Accessories;
 import com.gace.app.Eventinfo;
@@ -67,17 +68,16 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder>{
                 defaultDisplayImageOptions(theImageOptions).build();
         ImageLoader.getInstance().init(config);
 //
-        if(itemList.get(position).getRate().equals("Free")){
-            event_tag.setVisibility(View.GONE);
-        }
+            if(itemList.get(position).getRate().equals("Free")){
+                event_tag.setVisibility(View.GONE);
+            }
 
-        String imagelink = itemList.get(position).getImage();
-        imageLoader.displayImage(imagelink,image);
+            String imagelink = itemList.get(position).getImage();
+            imageLoader.displayImage(imagelink,image);
 
-        title.setText(itemList.get(position).getTitle());
-        description.setText(itemList.get(position).getUser());
-        location.setText(itemList.get(position).getLocation());
-
+            title.setText(itemList.get(position).getTitle());
+            description.setText(itemList.get(position).getUser());
+            location.setText(itemList.get(position).getLocation());
 
         image.setOnClickListener(new View.OnClickListener() {
             @Override

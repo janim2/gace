@@ -43,7 +43,7 @@ public class Search_Activity extends AppCompatActivity{ //implements AbsListView
     RecyclerView.Adapter mPostAdapter;
     RecyclerView.LayoutManager mPostLayoutManager;
     ArrayList resultPost = new ArrayList<Post>();
-    String title,user,location,likes,rate,prize,the_date,the_time;
+    String title,user,location,likes,rate,prize,the_date,the_time, isapproved;
     ProgressBar loading;
     FirebaseUser firebaseUser;
 
@@ -143,6 +143,10 @@ public class Search_Activity extends AppCompatActivity{ //implements AbsListView
                             if(child.getKey().equals("time")){
                                 the_time = child.getValue().toString();
                             }
+
+                            if(child.getKey().equals("isapproved")){
+                                isapproved = child.getValue().toString();
+                            }
                             else{
 //                            Toast.makeText(MainActivity.this,"Couldn't fetch posts",Toast.LENGTH_LONG).show();
                             }
@@ -150,7 +154,8 @@ public class Search_Activity extends AppCompatActivity{ //implements AbsListView
 
                         String eventid = key;
 
-                        Post obj = new Post(eventid,imageurl,description,location,likes,title,user,rate,prize,the_date,the_time);
+                        Post obj = new Post(eventid,imageurl,description,location,likes,title,
+                                user,rate,prize,the_date,the_time,isapproved);
                         resultPost.add(obj);
                         PostRecyclerView.setAdapter(mPostAdapter);
                         mPostAdapter.notifyDataSetChanged();

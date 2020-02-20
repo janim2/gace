@@ -1344,6 +1344,7 @@ id group_image
 id group_name
 id group_participants
 id group_recycler
+id groupname
 id groups
 id home
 id homeAsUp
@@ -1631,6 +1632,7 @@ id title
 id titleDividerNoCustom
 id title_container
 id title_template
+id toolbar
 id top
 id topPanel
 id touch_outside

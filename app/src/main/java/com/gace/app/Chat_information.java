@@ -1,20 +1,26 @@
 package com.gace.app;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.provider.ContactsContract;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +28,8 @@ import com.gace.app.objects.ChatMessage;
 import com.gace.app.objects.Chat_participants;
 import com.gace.app.objects.ParticipantAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -31,12 +39,17 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
+import java.util.UUID;
 
 public class Chat_information extends AppCompatActivity {
 
@@ -48,13 +61,16 @@ public class Chat_information extends AppCompatActivity {
 
     private ImageLoader imageLoader = ImageLoader.getInstance();
     private CardView addParticipantCard;
+    private Accessories chat_information_accessor;
+    private final int PICK_IMAGE_ONE_REQUEST = 71;
+    private Uri filePath_one;
+    ProgressDialog progressDialog;
+
 
     //participants details
-
     private ArrayList participantsArray = new ArrayList<Chat_participants>();
     private RecyclerView participants_RecyclerView;
     private RecyclerView.Adapter participants_Adapter;
-    private Accessories chat_information_accessor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +78,7 @@ public class Chat_information extends AppCompatActivity {
         setContentView(R.layout.activity_chat_information);
         chat_info = getIntent();
         chat_information_accessor = new Accessories(Chat_information.this);
+        progressDialog = new ProgressDialog(Chat_information.this);
 
         group_id = chat_info.getStringExtra("group_id");
         chat_name = chat_info.getStringExtra("group_name");
@@ -94,6 +111,16 @@ public class Chat_information extends AppCompatActivity {
         participants_Adapter = new ParticipantAdapter(getParticipantsfromDB(),Chat_information.this);
         participants_RecyclerView.setAdapter(participants_Adapter);
 
+
+        group_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_ONE_REQUEST);
+            }
+        });
 
         addParticipantCard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -277,7 +304,96 @@ public class Chat_information extends AppCompatActivity {
                 String name = cursor.getString(nameColumnIndex);
 //                Toast.makeText(Chat_information.this, name + " : " + number, Toast.LENGTH_LONG).show();
                 Addparticipant(number.replace("+233","0"));
+
+        }else if(requestCode == PICK_IMAGE_ONE_REQUEST && resultCode == RESULT_OK
+                && data != null && data.getData() != null )
+        {
+            filePath_one = data.getData();
+            UpdateGroupImage(filePath_one);
+
+            try {
+                try {
+                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath_one);
+                    group_image.setImageBitmap(bitmap);
+                }catch (OutOfMemoryError e){
+
+                }
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
         }
+    }
+
+    private void UpdateGroupImage(Uri filePath_one) {
+        progressDialog.setMessage("Updating Image");
+        progressDialog.show();
+        if(filePath_one != null)
+        {
+//                    progressDialog.setTitle("Uploading...");
+//                    progressDialog.show();
+            Random r = new Random();
+            int d = r.nextInt(4545423);
+            String image_id = d+"";
+
+            FirebaseStorage storage = FirebaseStorage.getInstance();
+            StorageReference storage_reference = storage.getReference();
+
+            StorageReference ref_1 = storage_reference.child("images/group_images/"+image_id+"/"+ UUID.randomUUID().toString());
+            ref_1.putFile(filePath_one)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            if (taskSnapshot.getMetadata() != null) {
+                                if (taskSnapshot.getMetadata().getReference() != null) {
+                                    Task<Uri> result = taskSnapshot.getStorage().getDownloadUrl();
+                                    result.addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                        @Override
+                                        public void onSuccess(Uri uri) {
+                                            String imageUrl = uri.toString();
+
+                                            DatabaseReference addImages_one = FirebaseDatabase.getInstance().getReference("groups").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(group_id);
+                                            addImages_one.child("image").setValue(imageUrl);
+//                                            addImages_one.child("name").setValue(g_name);
+//                                            addImages_one.child("description").setValue(g_description);
+//                                            addImages_one.child("isagroup").setValue("Yes");
+                                        }
+                                    });
+                                }
+                            }
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+//                                    progressDialog.dismiss();
+                            AlertDialog.Builder success = new AlertDialog.Builder(Chat_information.this);
+                            success.setMessage("Upload failed");
+                            success.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            });
+                            success.show();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
+                                    .getTotalByteCount());
+                                    progressDialog.setMessage("Uploaded "+(int)progress+"%");
+                        }
+                    })
+                    .addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                            progressDialog.dismiss();
+                        }
+                    });
+    }
     }
 
     private void Addparticipant(String number) {

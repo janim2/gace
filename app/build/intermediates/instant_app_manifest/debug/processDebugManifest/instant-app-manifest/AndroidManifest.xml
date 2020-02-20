@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gace.app"
     android:targetSandboxVersion="2"
-    android:versionCode="27"
+    android:versionCode="28"
     android:versionName="1.0" >
 
     <uses-sdk
@@ -47,7 +47,7 @@
         <activity
             android:name="com.gace.app.Chat_details"
             android:parentActivityName="com.gace.app.ChatGroups"
-            android:theme="@style/AppTheme.YesActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.gace.app.Add_Group"
             android:parentActivityName="com.gace.app.ChatGroups"
@@ -149,13 +149,7 @@
             <meta-data
                 android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
                 android:value="com.google.firebase.components.ComponentRegistrar" />
-        </service>
-
-        <provider
-            android:name="com.crashlytics.android.CrashlyticsInitProvider"
-            android:authorities="com.gace.app.crashlyticsinitprovider"
-            android:exported="false"
-            android:initOrder="90" /> <!-- Needs to be explicitly declared on P+ -->
+        </service> <!-- Needs to be explicitly declared on P+ -->
         <uses-library
             android:name="org.apache.http.legacy"
             android:required="false" />

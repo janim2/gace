@@ -23,7 +23,7 @@
         <activity
             android:name=".Chat_details"
             android:parentActivityName=".ChatGroups"
-            android:theme="@style/AppTheme.YesActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".Add_Group"
             android:parentActivityName=".ChatGroups"

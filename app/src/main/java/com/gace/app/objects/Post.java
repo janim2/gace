@@ -19,13 +19,14 @@ public class Post {
     public String prize;
     public String date;
     public String time;
+    public String isitemapproved;
 
     public Post(){
 
     }
 
     public Post(String eventid, String image,String description, String location,String likes,String title,
-                String user,String rate,String prize,String date, String time) {
+                String user,String rate,String prize,String date, String time, String isitemapproved) {
 
         this.eventid = eventid;
         this.image = image;
@@ -38,6 +39,7 @@ public class Post {
         this.prize = prize;
         this.date = date;
         this.time = time;
+        this.isitemapproved = isitemapproved;
 
 
 //        this.image = image;
@@ -68,6 +70,8 @@ public class Post {
      public String getDate() { return date; }
 
      public String getTime() { return time; }
+
+     public String getIsitemapproved() { return isitemapproved; }
 //    public void setUser(String user) { this.user= user; }
 //
 //     public String getImage() { return image; }

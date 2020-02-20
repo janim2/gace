@@ -79,7 +79,7 @@ public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
     private RecyclerView review_RecyclerView;
     private RecyclerView.Adapter reviewAdapter;
     private RecyclerView.LayoutManager review_mPostLayoutManager;
-    private String review_name, review_message, review_title;
+    private String review_name, review_message, review_title, isapproved;
 
     //variables ends here
 
@@ -481,6 +481,10 @@ public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
                             if(child.getKey().equals("time")){
                                 the_time = child.getValue().toString();
                             }
+
+                            if(child.getKey().equals("isapproved")){
+                                isapproved = child.getValue().toString();
+                            }
                             else{
 //                            Toast.makeText(MainActivity.this,"Couldn't fetch posts",Toast.LENGTH_LONG).show();
                             }
@@ -489,7 +493,8 @@ public class Eventinfo extends AppCompatActivity implements OnMapReadyCallback {
                         if(rate.equals(srate_of_event)){
                             String eventid = key;
 
-                            Post obj = new Post(eventid,imageurl,description,location,slikes,title,user,rate,sprize,the_date,the_time);
+                            Post obj = new Post(eventid,imageurl,description,location,slikes,title,
+                                    user,rate,sprize,the_date,the_time,isapproved);
                             relatedParts.add(obj);
                             related_items_RecyclerView.setAdapter(related_items_mPostAdapter);
                             related_items_mPostAdapter.notifyDataSetChanged();

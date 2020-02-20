@@ -7,6 +7,21 @@
     android:id="@+id/chat_frame"
     tools:context=".Chat_details">
 
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="?colorPrimary"
+        android:id="@+id/toolbar">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+            android:id="@+id/groupname"/>
+
+    </android.support.v7.widget.Toolbar>
+
     <ProgressBar
         android:layout_width="match_parent"
         android:layout_height="25dp"
@@ -19,7 +34,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="top"
-        android:layout_margin="5dp">
+        android:layout_marginTop="57dp">
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"

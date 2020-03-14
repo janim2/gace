@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -25,9 +27,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.ServerSocket;
+import java.net.SocketTimeoutException;
 import java.util.Random;
 
 public class Continue_Ticketing extends BaseActivity {
+
+    private static final String TAG = Continue_Ticketing.class.getSimpleName();
 
     EditText first_name,last_name,email,phone;
     TextView ticket_prize,event_or_ticketName,ticket_type, success_message;
@@ -136,7 +144,6 @@ public class Continue_Ticketing extends BaseActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError databaseError) {
-
                 }
             });
         }catch (NullPointerException e){
@@ -156,9 +163,12 @@ public class Continue_Ticketing extends BaseActivity {
                     if(!phone_number_string.equals("")){
                         if(isNetworkAvailable()){
 //                            if(finish_registration()){
-                                FlutterwavePayment();
+//                                FlutterwavePayment();
 //                                startActivity(new Intent(Continue_Ticketing.this,OrderComplete.class));
 //                            }
+                            Intent httpIntent = new Intent(Intent.ACTION_VIEW);
+                            httpIntent.setData(Uri.parse("https://flutterwave.com/pay/7neibatpbvyv"));
+                            startActivity(httpIntent);
                         }else{
                             success_message.setTextColor(getResources().getColor(R.color.red));
                             success_message.setText("No Internet Connection");
@@ -177,7 +187,7 @@ public class Continue_Ticketing extends BaseActivity {
         }
     }
 
-    private void FlutterwavePayment() {
+    private void FlutterwavePayment()  {
         try{
             Random d = new Random();
             int ss = d.nextInt(454545454);
@@ -186,30 +196,24 @@ public class Continue_Ticketing extends BaseActivity {
             new RavePayManager(Continue_Ticketing.this).setAmount(Double.valueOf(event_prize.replace("GHC ","")))
                     .setCountry("GH")
                     .setCurrency("GHS")
-                    .setPublicKey("FLWPUBK_TEST-0740441b742746440652b58a3145d715-X")//test
-                    .setEncryptionKey("FLWSECK_TEST50024d4396a5")//test
-////
+//                    .setPublicKey("FLWPUBK_TEST-0740441b742746440652b58a3145d715-X")//test
+//                    .setEncryptionKey("FLWSECK_TEST50024d4396a5")//test
 //                    having a tracnscation fee error with this live key
-//                    .setPublicKey("FLWPUBK-9f910be2cca606f52d4d0914badb51ec-X")//live
-//                    .setEncryptionKey("cdfdb7d775ffbd5216cf6884")//live
-//
-//                .setPublicKey(emma_PUBLIC_KEY)
-//                .setEncryptionKey(emma_ENCRYPTION_KEY)
-//                    .isPreAuth(true)
+                    .setPublicKey("FLWPUBK-9f910be2cca606f52d4d0914badb51ec-X")//live
+                    .setEncryptionKey("cdfdb7d775ffbd5216cf6884")//live
                     .setfName(firstname_string)
                     .setlName(lastname_string)
                     .setEmail(FirebaseAuth.getInstance().getCurrentUser().getEmail())
                     .setNarration("Gace Payment")
                     .setTxRef(refid)
                     .acceptGHMobileMoneyPayments(true)
-                    .acceptCardPayments(false)
                     .allowSaveCardFeature(false)
                     .acceptCardPayments(true)
                     .allowSaveCardFeature(true)
-                    .onStagingEnv(true)
+                    .onStagingEnv(false)
                     .initialize();
         }catch (NullPointerException e){
-
+            Log.d(TAG,"no value found");
         }
     }
 

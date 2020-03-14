@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/jesse/AndroidStudioProjects/gace/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml",
+            "outputFile": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml",
             "map": [
                 {
-                    "source": "/home/jesse/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/29dce0c2b4ddbd05d0d59da52745b0df/res/values-land/values-land.xml",
+                    "source": "/home/jesse/.gradle/caches/transforms-2/files-2.1/2a9c998728432b10d9241b91beadea4e/appcompat-v7-28.0.0/res/values-land/values-land.xml",
                     "from": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "/home/jesse/.gradle/caches/transforms-1/files-1.1/design-28.0.0.aar/082c290e6e69d2022f7baadae15fe33f/res/values-land/values-land.xml",
+                    "source": "/home/jesse/.gradle/caches/transforms-2/files-2.1/43ef2ff03b58e4d2a23352bd1ea4857a/design-28.0.0/res/values-land/values-land.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

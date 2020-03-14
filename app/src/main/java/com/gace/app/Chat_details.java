@@ -34,7 +34,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.support.v7.widget.Toolbar;
 
-import com.firebase.ui.database.FirebaseListAdapter;
+//import com.firebase.ui.database.FirebaseListAdapter;
 import com.gace.app.objects.ChatMessage;
 import com.gace.app.objects.MessageAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -64,7 +64,7 @@ public class Chat_details extends AppCompatActivity {
     private String group_id,group_name;
     private Intent details_intent;
 
-    FirebaseListAdapter<ChatMessage> adapter;
+//    FirebaseListAdapter<ChatMessage> adapter;
     private ArrayList messagesArray = new ArrayList<ChatMessage>();
     private RecyclerView messages_RecyclerView;
     private RecyclerView.Adapter messages_mAdapter;

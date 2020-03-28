@@ -124,6 +124,10 @@
         "source": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/generated/res/pngs/debug/drawable-anydpi-v21/profile.xml"
     },
     {
+        "merged": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_refresh.png.flat",
+        "source": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/generated/res/pngs/debug/drawable-xxxhdpi/refresh.png"
+    },
+    {
         "merged": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_location_on_black_24dp.png.flat",
         "source": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/generated/res/pngs/debug/drawable-xxxhdpi/ic_location_on_black_24dp.png"
     },
@@ -168,16 +172,20 @@
         "source": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/generated/res/pngs/debug/drawable-xxxhdpi/logobb.png"
     },
     {
-        "merged": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_launcher_background.png.flat",
-        "source": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/generated/res/pngs/debug/drawable-mdpi/ic_launcher_background.png"
+        "merged": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/intermediates/res/merged/debug/drawable-hdpi_refresh.png.flat",
+        "source": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/generated/res/pngs/debug/drawable-hdpi/refresh.png"
+    },
+    {
+        "merged": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/intermediates/res/merged/debug/drawable-xhdpi_prize.png.flat",
+        "source": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/generated/res/pngs/debug/drawable-xhdpi/prize.png"
     },
     {
         "merged": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/intermediates/res/merged/debug/layout_related_item_event.xml.flat",
         "source": "/home/jesse/AndroidStudioProjects/NitchApp/app/src/main/res/layout/related_item_event.xml"
     },
     {
-        "merged": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/intermediates/res/merged/debug/drawable-xhdpi_prize.png.flat",
-        "source": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/generated/res/pngs/debug/drawable-xhdpi/prize.png"
+        "merged": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/intermediates/res/merged/debug/drawable-mdpi_ic_launcher_background.png.flat",
+        "source": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/generated/res/pngs/debug/drawable-mdpi/ic_launcher_background.png"
     },
     {
         "merged": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/intermediates/res/merged/debug/drawable-xxhdpi_prize.png.flat",
@@ -236,6 +244,10 @@
         "source": "/home/jesse/AndroidStudioProjects/NitchApp/app/src/main/res/layout/activity_event_registration.xml"
     },
     {
+        "merged": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/intermediates/res/merged/debug/drawable-xxhdpi_refresh.png.flat",
+        "source": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/generated/res/pngs/debug/drawable-xxhdpi/refresh.png"
+    },
+    {
         "merged": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_white.png.flat",
         "source": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/generated/res/pngs/debug/drawable-xxxhdpi/white.png"
     },
@@ -282,6 +294,10 @@
     {
         "merged": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/intermediates/res/merged/debug/drawable-xhdpi_documents.png.flat",
         "source": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/generated/res/pngs/debug/drawable-xhdpi/documents.png"
+    },
+    {
+        "merged": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/intermediates/res/merged/debug/drawable-mdpi_refresh.png.flat",
+        "source": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/generated/res/pngs/debug/drawable-mdpi/refresh.png"
     },
     {
         "merged": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_date_range_black_24dp.png.flat",
@@ -536,6 +552,10 @@
         "source": "/home/jesse/AndroidStudioProjects/NitchApp/app/src/main/res/drawable/my_message_.xml"
     },
     {
+        "merged": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/intermediates/res/merged/debug/drawable-xhdpi_refresh.png.flat",
+        "source": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/generated/res/pngs/debug/drawable-xhdpi/refresh.png"
+    },
+    {
         "merged": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/intermediates/res/merged/debug/mipmap-xhdpi_ic_launcher.png.flat",
         "source": "/home/jesse/AndroidStudioProjects/NitchApp/app/src/main/res/mipmap-xhdpi/ic_launcher.png"
     },
@@ -622,6 +642,10 @@
     {
         "merged": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/intermediates/res/merged/debug/layout_activity_all_post.xml.flat",
         "source": "/home/jesse/AndroidStudioProjects/NitchApp/app/src/main/res/layout/activity_all_post.xml"
+    },
+    {
+        "merged": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/intermediates/res/merged/debug/drawable-anydpi-v21_refresh.xml.flat",
+        "source": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/generated/res/pngs/debug/drawable-anydpi-v21/refresh.xml"
     },
     {
         "merged": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/intermediates/res/merged/debug/layout_chat_participant_attachment.xml.flat",
@@ -774,6 +798,10 @@
     {
         "merged": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/intermediates/res/merged/debug/layout_activity_post_detail.xml.flat",
         "source": "/home/jesse/AndroidStudioProjects/NitchApp/app/src/main/res/layout/activity_post_detail.xml"
+    },
+    {
+        "merged": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/intermediates/res/merged/debug/drawable-ldpi_refresh.png.flat",
+        "source": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/generated/res/pngs/debug/drawable-ldpi/refresh.png"
     },
     {
         "merged": "/home/jesse/AndroidStudioProjects/NitchApp/app/build/intermediates/res/merged/debug/menu_main.xml.flat",

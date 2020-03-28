@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -28,6 +29,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -43,6 +46,7 @@ public class MainActivity extends BaseActivity {
     String title,description,user,location,likes,imageurl,rate,prize,the_date,the_time,is_item_approved;
     ProgressBar loading;
     FirebaseUser firebaseUser;
+    TextView no_internet;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -61,7 +65,6 @@ public class MainActivity extends BaseActivity {
 //                Toast.makeText(MainActivity.this,"Verify Email",Toast.LENGTH_LONG).show();
         }else{
             startActivity(new Intent(MainActivity.this,LoginActivity.class));
-
             }
         }
 
@@ -71,6 +74,7 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().setTitle("NitchApp");
         loading  = (ProgressBar)findViewById(R.id.loading);
+        no_internet  = (TextView) findViewById(R.id.no_internet);
 
         PostRecyclerView = (RecyclerView) findViewById(R.id.myRecyclerView);
         PostRecyclerView.setHasFixedSize(true);
@@ -84,11 +88,28 @@ public class MainActivity extends BaseActivity {
                 getPostIds();
                 mPostAdapter = new PostAdapter(getPosts(), MainActivity.this);
                 PostRecyclerView.setAdapter(mPostAdapter);
+            }else{
+                loading.setVisibility(View.GONE);
+                no_internet.setVisibility(View.VISIBLE);
             }
 
         }catch (NoClassDefFoundError e){
 
         }
+
+        no_internet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(isNetworkAvailable()){
+                    getPostIds();
+                    mPostAdapter = new PostAdapter(getPosts(), MainActivity.this);
+                    PostRecyclerView.setAdapter(mPostAdapter);
+                }else{
+                    loading.setVisibility(View.GONE);
+                    no_internet.setVisibility(View.VISIBLE);
+                }
+            }
+        });
     }
 
     @Override
@@ -154,6 +175,8 @@ public class MainActivity extends BaseActivity {
     }
 
     private void getPostIds() {
+        loading.setVisibility(View.VISIBLE);
+        no_internet.setVisibility(View.GONE);
         try{
             DatabaseReference Postdatabase = FirebaseDatabase.getInstance().getReference().child("post");
 

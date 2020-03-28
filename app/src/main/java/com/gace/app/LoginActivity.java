@@ -127,12 +127,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     @Override
     public void onStart() {
         super.onStart();
-
-        // Check auth on Activity start
-        if (mAuth.getCurrentUser() != null) {
-            onAuthSuccess(mAuth.getCurrentUser());
-            startActivity(new Intent(LoginActivity.this,MainActivity.class));
-        }
     }
 
     private void signIn() {

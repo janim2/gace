@@ -327,25 +327,25 @@ ADDED from /home/jesse/AndroidStudioProjects/NitchApp/app/src/main/AndroidManife
 	android:name
 		ADDED from /home/jesse/AndroidStudioProjects/NitchApp/app/src/main/AndroidManifest.xml:81:13-38
 activity#com.gace.app.MainActivity
-ADDED from /home/jesse/AndroidStudioProjects/NitchApp/app/src/main/AndroidManifest.xml:84:9-86:60
+ADDED from /home/jesse/AndroidStudioProjects/NitchApp/app/src/main/AndroidManifest.xml:84:9-91:20
 	android:theme
 		ADDED from /home/jesse/AndroidStudioProjects/NitchApp/app/src/main/AndroidManifest.xml:86:13-57
 	android:name
 		ADDED from /home/jesse/AndroidStudioProjects/NitchApp/app/src/main/AndroidManifest.xml:85:13-41
-activity#com.gace.app.LoginActivity
-ADDED from /home/jesse/AndroidStudioProjects/NitchApp/app/src/main/AndroidManifest.xml:87:9-93:20
-	android:name
-		ADDED from /home/jesse/AndroidStudioProjects/NitchApp/app/src/main/AndroidManifest.xml:87:19-48
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/jesse/AndroidStudioProjects/NitchApp/app/src/main/AndroidManifest.xml:88:13-92:29
+ADDED from /home/jesse/AndroidStudioProjects/NitchApp/app/src/main/AndroidManifest.xml:87:13-90:29
 action#android.intent.action.MAIN
-ADDED from /home/jesse/AndroidStudioProjects/NitchApp/app/src/main/AndroidManifest.xml:89:17-69
+ADDED from /home/jesse/AndroidStudioProjects/NitchApp/app/src/main/AndroidManifest.xml:88:17-69
 	android:name
-		ADDED from /home/jesse/AndroidStudioProjects/NitchApp/app/src/main/AndroidManifest.xml:89:25-66
+		ADDED from /home/jesse/AndroidStudioProjects/NitchApp/app/src/main/AndroidManifest.xml:88:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/jesse/AndroidStudioProjects/NitchApp/app/src/main/AndroidManifest.xml:91:17-77
+ADDED from /home/jesse/AndroidStudioProjects/NitchApp/app/src/main/AndroidManifest.xml:89:17-77
 	android:name
-		ADDED from /home/jesse/AndroidStudioProjects/NitchApp/app/src/main/AndroidManifest.xml:91:27-74
+		ADDED from /home/jesse/AndroidStudioProjects/NitchApp/app/src/main/AndroidManifest.xml:89:27-74
+activity#com.gace.app.LoginActivity
+ADDED from /home/jesse/AndroidStudioProjects/NitchApp/app/src/main/AndroidManifest.xml:92:9-93:20
+	android:name
+		ADDED from /home/jesse/AndroidStudioProjects/NitchApp/app/src/main/AndroidManifest.xml:92:19-48
 activity#com.gace.app.RegisterActivity
 ADDED from /home/jesse/AndroidStudioProjects/NitchApp/app/src/main/AndroidManifest.xml:94:9-97:60
 	android:parentActivityName

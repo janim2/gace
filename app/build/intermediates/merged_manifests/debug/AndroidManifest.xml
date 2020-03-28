@@ -107,13 +107,14 @@
             android:theme="@style/AppTheme.YesActionBar" />
         <activity
             android:name="com.gace.app.MainActivity"
-            android:theme="@style/AppTheme.YesActionBar" />
-        <activity android:name="com.gace.app.LoginActivity" >
+            android:theme="@style/AppTheme.YesActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name="com.gace.app.LoginActivity" >
         </activity>
         <activity
             android:name="com.gace.app.RegisterActivity"

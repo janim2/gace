@@ -9,7 +9,6 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/thelogo"
@@ -17,21 +16,23 @@
         android:roundIcon="@mipmap/thelogo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Chat_information"
-            android:theme="@style/AppTheme.YesActionBar"
-            android:parentActivityName=".Chat_details"></activity>
+        <activity android:name=".Payment_webview"></activity>
+        <activity
+            android:name=".Chat_information"
+            android:parentActivityName=".Chat_details"
+            android:theme="@style/AppTheme.YesActionBar" />
         <activity
             android:name=".Chat_details"
             android:parentActivityName=".ChatGroups"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Add_Group"
             android:parentActivityName=".ChatGroups"
-            android:theme="@style/AppTheme.YesActionBar"/>
+            android:theme="@style/AppTheme.YesActionBar" />
         <activity
             android:name=".ChatGroups"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.YesActionBar"/>
+            android:theme="@style/AppTheme.YesActionBar" />
         <activity
             android:name=".EventReviews"
             android:parentActivityName=".Eventinfo"
@@ -49,8 +50,9 @@
             android:name=".Contact_Organizer"
             android:parentActivityName=".Eventinfo"
             android:theme="@style/AppTheme.YesActionBar" />
-        <activity android:name=".OrderComplete"
-            android:theme="@style/AppTheme.YesActionBar"/>
+        <activity
+            android:name=".OrderComplete"
+            android:theme="@style/AppTheme.YesActionBar" />
         <activity
             android:name=".Continue_Ticketing"
             android:parentActivityName=".BuyTicket"
@@ -86,11 +88,11 @@
             android:theme="@style/AppTheme.YesActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity">
-        </activity>
+        <activity android:name=".LoginActivity"></activity>
         <activity
             android:name=".RegisterActivity"
             android:parentActivityName=".LoginActivity"

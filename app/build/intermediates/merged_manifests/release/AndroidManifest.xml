@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gace.app"
-    android:versionCode="28"
+    android:versionCode="30"
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="16"
+        android:minSdkVersion="21"
         android:targetSdkVersion="28" />
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -44,7 +44,7 @@
         <activity
             android:name="com.gace.app.Chat_details"
             android:parentActivityName="com.gace.app.ChatGroups"
-            android:theme="@style/AppTheme.YesActionBar" />
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.gace.app.Add_Group"
             android:parentActivityName="com.gace.app.ChatGroups"
@@ -105,13 +105,14 @@
             android:theme="@style/AppTheme.YesActionBar" />
         <activity
             android:name="com.gace.app.MainActivity"
-            android:theme="@style/AppTheme.YesActionBar" />
-        <activity android:name="com.gace.app.LoginActivity" >
+            android:theme="@style/AppTheme.YesActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name="com.gace.app.LoginActivity" >
         </activity>
         <activity
             android:name="com.gace.app.RegisterActivity"
